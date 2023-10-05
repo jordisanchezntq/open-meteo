@@ -1,0 +1,7 @@
+{
+  "name": "open-meteo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}
