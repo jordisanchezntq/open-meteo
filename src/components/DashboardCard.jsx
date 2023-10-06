@@ -3,7 +3,7 @@ import { IonCard, IonCardHeader, IonCardTitle, IonCardContent } from "@ionic/rea
 const DashboardCard = ({hourlyData}) => {
 
     return (
-        <IonCard>
+      <IonCard>
         <IonCardHeader color='primary'>
           <IonCardTitle className='ion-text-center' style={{ fontSize: '20px'}}>
             Últimas temperaturas:

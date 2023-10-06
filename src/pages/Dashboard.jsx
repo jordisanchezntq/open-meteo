@@ -51,19 +51,17 @@ console.log(hourlyData)
                 : 'Consultar temperatura'
               }
         </IonButton>
-        <IonContent>
           {
             hourlyData
             ? (
               <DashboardCard hourlyData={hourlyData} />
               )
               : (
-                <IonText className='ion-padding ion-text-center'>
+                <IonText className='ion-text-center'>
                 No has consultado nada :(
               </IonText>
             )
           }
-        </IonContent>
       </IonContent>
     </IonPage>
   );
