@@ -1,7 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
 
-const Weather: React.FC = () => {
+const Weather = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -9,7 +8,7 @@ const Weather: React.FC = () => {
           <IonTitle>Weather</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen className='ion-padding'>
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">Weather</IonTitle>

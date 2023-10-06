@@ -14,8 +14,10 @@ import { ellipse, square, homeOutline } from 'ionicons/icons';
 import Dashboard from './pages/Dashboard';
 import Weather from './pages/Weather';
 import Contact from './pages/Contact';
-import { createRenderer } from 'fela'
-import { RendererProvider } from 'react-fela';
+
+// Redux
+import { Provider} from 'react-redux';
+import store from './store';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -38,9 +40,10 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-const App: React.FC = () => (
+const App = () => (
   <IonApp>
-    <RendererProvider renderer={createRenderer()}>
+    <Provider store={store}>
+
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>
@@ -73,7 +76,7 @@ const App: React.FC = () => (
           </IonTabBar>
         </IonTabs>
       </IonReactRouter>
-    </RendererProvider>
+    </Provider>
   </IonApp>
 );
 

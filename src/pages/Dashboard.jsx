@@ -1,32 +1,19 @@
 import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonInput, IonItem, IonList, IonPage, IonSpinner, IonText, IonTitle, IonToolbar } from '@ionic/react';
-import { useState, useEffect } from 'react';
-import BouncingDiv from '../fela/BouncingDiv';
+import { useEffect, useState } from 'react';
+// Actions redux
+import { getWeatherAction } from '../actions/weatherActions';
+import { useDispatch, useSelector } from 'react-redux'
 
 const Dashboard = () => {
-const [ city, setCity ] = useState('');
-const [ weather, setWeather ] = useState<{ hourly: {
-  temperature_2m: number[]
-}}>({
-  hourly: {
-    temperature_2m: []
-  }
-});
-const [isLoading, setIsLoading] = useState(false);
+const dispatch = useDispatch();
+const loading = useSelector( state => state.weather.loading);
+const weather = useSelector( state => state.weather);
 
-const handleGetWeather = async () => {
-  setIsLoading(true)
-  const result = await fetch(`${import.meta.env.VITE_API_URL}`);
-  const data = await result.json();
-
-  // setting state of weather and loading spinner out
-  setWeather(data);
-  setIsLoading(false)
+const handleGetWeather = () => {
+  dispatch( getWeatherAction())
 }
 
-// Destructuring weather
-  const { hourly: { temperature_2m } } = weather;
-  const currentTemp: number = temperature_2m[0]
-
+console.log(weather.temperatures)
 
   return (
     <IonPage>
@@ -51,7 +38,7 @@ const handleGetWeather = async () => {
               onClick={handleGetWeather}
             >
               {
-                isLoading
+                loading
                 ? ( <IonSpinner></IonSpinner> )
                 : 'Consultar temperatura'
               }
@@ -60,9 +47,8 @@ const handleGetWeather = async () => {
       </IonContent>
       <IonContent className='ion-padding'>
         {
-          currentTemp
+          weather
           ? (
-            <BouncingDiv>
               <IonCard>
                 <IonCardHeader>
                   <IonCardTitle color='primary' className='ion-text-center'>
@@ -70,11 +56,9 @@ const handleGetWeather = async () => {
                   </IonCardTitle>
                 </IonCardHeader>
                 <IonCardContent className='ion-padding ion-text-center'>
-                  {currentTemp}&deg;C
+                  {weather.elevation}&deg;C
                 </IonCardContent>
               </IonCard>
-
-            </BouncingDiv>
           )
           : (
             <IonText className='ion-text-center'>

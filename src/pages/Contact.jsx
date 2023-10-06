@@ -1,7 +1,6 @@
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
 
-const Tab3: React.FC = () => {
+const Contact = () => {
   return (
     <IonPage>
       <IonHeader>
@@ -15,10 +14,9 @@ const Tab3: React.FC = () => {
             <IonTitle size="large">Contact</IonTitle>
           </IonToolbar>
         </IonHeader>
-        
       </IonContent>
     </IonPage>
   );
 };
 
-export default Tab3;
+export default Contact;
