@@ -11,8 +11,8 @@ const DashboardCard = ({hourlyData}) => {
         </IonCardHeader>
         <IonCardContent className='ion-padding ion-text-center'>
           <ul style={{listStyle: 'none', textAlign: 'start'}}>
-            { hourlyData.map((degree, id) => (
-              <li key={id} style={{fontSize: '18px'}}>{degree} &deg;C</li>
+            { hourlyData.map((degree, i) => (
+              <li key={i} style={{fontSize: '18px'}}>{degree} &deg;C</li>
             ))}
           </ul>
         </IonCardContent>

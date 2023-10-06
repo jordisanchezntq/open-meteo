@@ -3,6 +3,7 @@ import { IonButton, IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText
 import { getWeatherAction } from '../actions/weatherActions';
 import { useDispatch, useSelector } from 'react-redux'
 import DashboardCard from '../components/DashboardCard';
+import SearchBar from '../components/SearchBar'
 
 const Dashboard = () => {
 const dispatch = useDispatch();
@@ -24,20 +25,24 @@ console.log(hourlyData)
           <IonTitle>Dashboard</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
+      <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">Dashboard</IonTitle>
           </IonToolbar>
+          <IonItem>
+            <IonText>
+                Esta es la versión prueba de una App para consultar datos de https://open-meteo.com/. En este caso, dividimos la app en 3 tabs. El primer tab, muestra una <strong>Card</strong> con la consulta a la Api que se realiza haciendo click en el siguiente botón:
+            </IonText>
+          </IonItem>
         </IonHeader>
-        <IonItem class='ion-padding'>
-          <IonText>
-            Esta es la versión prueba de una App para consultar datos de https://open-meteo.com/. En este caso, dividimos la app en 3 tabs. El primer tab, muestra una <strong>Card</strong> con la consulta a la Api que se realiza haciendo click en el siguiente botón:
-          </IonText>
+        <IonItem>
+          <SearchBar />
         </IonItem>
         <IonButton
               expand='block'
               className='ion-padding'
+              style={{fontSize: '20px'}}
               onClick={handleGetWeather}
             >
               {
@@ -45,21 +50,20 @@ console.log(hourlyData)
                 ? ( <IonSpinner></IonSpinner> )
                 : 'Consultar temperatura'
               }
-            </IonButton>
-      </IonContent>
-      <IonContent>
-        {
-          hourlyData
-          ? (
-             <DashboardCard hourlyData={hourlyData} />
-          )
-          : (
-            <IonText className='ion-padding ion-text-center'>
-              No has consultado nada :(
-            </IonText>
-          )
-        }
-       
+        </IonButton>
+        <IonContent>
+          {
+            hourlyData
+            ? (
+              <DashboardCard hourlyData={hourlyData} />
+              )
+              : (
+                <IonText className='ion-padding ion-text-center'>
+                No has consultado nada :(
+              </IonText>
+            )
+          }
+        </IonContent>
       </IonContent>
     </IonPage>
   );
