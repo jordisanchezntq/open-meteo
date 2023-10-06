@@ -1,4 +1,4 @@
-import { IonButton, IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButton, IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, IonNote } from '@ionic/react';
 // Actions redux
 import { getWeatherAction } from '../actions/weatherActions';
 import { useDispatch, useSelector } from 'react-redux'
@@ -38,6 +38,7 @@ console.log(hourlyData)
         </IonHeader>
         <IonItem>
           <SearchBar />
+          <IonNote color="primary">Under...🚧 </IonNote>
         </IonItem>
         <IonButton
               expand='block'
@@ -57,9 +58,11 @@ console.log(hourlyData)
               <DashboardCard hourlyData={hourlyData} />
               )
               : (
-                <IonText className='ion-text-center'>
-                No has consultado nada :(
-              </IonText>
+                <IonItem>
+                  <IonText style={{ fontSize: '20px'}}>
+                    No has consultado nada :( dale click!!
+                  </IonText>
+                </IonItem>
             )
           }
       </IonContent>

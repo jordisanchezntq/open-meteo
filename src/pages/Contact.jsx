@@ -43,8 +43,8 @@ const Contact = () => {
           </IonItem>
           <IonItem>
             <IonToggle>
-              <IonLabel>Allow Notifications</IonLabel>
-              <IonNote color="medium">Unsubscribe at any time</IonNote>
+              <IonLabel>Suscribirse</IonLabel>
+              <IonNote color="medium">Podrás cancelar suscripción en cualquier momento</IonNote>
             </IonToggle>
           </IonItem>
         </IonList>
