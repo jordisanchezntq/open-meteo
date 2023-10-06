@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 // Actions redux
 import { getWeatherAction } from '../actions/weatherActions';
 import { useDispatch, useSelector } from 'react-redux'
+import DashboardCard from '../components/DashboardCard';
 
 const Dashboard = () => {
 const dispatch = useDispatch();
@@ -51,20 +52,7 @@ console.log(hourlyData)
         {
           hourlyData
           ? (
-              <IonCard>
-                <IonCardHeader color='primary'>
-                  <IonCardTitle className='ion-text-center' style={{ fontSize: '20px'}}>
-                    Últimas temperaturas:
-                  </IonCardTitle>
-                </IonCardHeader>
-                <IonCardContent className='ion-padding ion-text-center'>
-                  <ul style={{listStyle: 'none', textAlign: 'start'}}>
-                    { hourlyData.map((degree, id) => (
-                      <li key={id} style={{fontSize: '18px'}}>{degree} &deg;C</li>
-                    ))}
-                  </ul>
-                </IonCardContent>
-              </IonCard>
+             <DashboardCard hourlyData={hourlyData} />
           )
           : (
             <IonText className='ion-text-center'>
