@@ -7,13 +7,15 @@ import { useDispatch, useSelector } from 'react-redux'
 const Dashboard = () => {
 const dispatch = useDispatch();
 const loading = useSelector( state => state.weather.loading);
-const weather = useSelector( state => state.weather);
+const temperature = useSelector( state => state.weather.temperatures[0]);
 
 const handleGetWeather = () => {
   dispatch( getWeatherAction())
 }
 
-console.log(weather.temperatures)
+// Getting values
+const hourlyData = temperature?.hourly.temperature_2m;
+console.log(hourlyData)
 
   return (
     <IonPage>
@@ -47,16 +49,20 @@ console.log(weather.temperatures)
       </IonContent>
       <IonContent className='ion-padding'>
         {
-          weather
+          hourlyData
           ? (
               <IonCard>
-                <IonCardHeader>
-                  <IonCardTitle color='primary' className='ion-text-center'>
-                    Temperatura:
+                <IonCardHeader color='primary'>
+                  <IonCardTitle className='ion-text-center' style={{ fontSize: '20px'}}>
+                    Últimas temperaturas:
                   </IonCardTitle>
                 </IonCardHeader>
                 <IonCardContent className='ion-padding ion-text-center'>
-                  {weather.elevation}&deg;C
+                  <ul style={{listStyle: 'none', textAlign: 'start'}}>
+                    { hourlyData.map((degree, id) => (
+                      <li key={id} style={{fontSize: '18px'}}>{degree} &deg;C</li>
+                    ))}
+                  </ul>
                 </IonCardContent>
               </IonCard>
           )
