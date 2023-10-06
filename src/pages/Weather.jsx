@@ -1,4 +1,5 @@
-import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem, IonCol, IonGrid, IonRow } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem, IonCol, IonGrid, IonRow, IonRefresher,
+  IonRefresherContent } from '@ionic/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { getWeatherAction } from '../actions/weatherActions';
@@ -6,6 +7,7 @@ import { getWeatherAction } from '../actions/weatherActions';
 
 const Weather = () => {
   const [ temp, setTemp ] = useState([]);
+  const [ refreshTrigger, setRefreshTrigger ] = useState(false);
   const dispatch = useDispatch();
   const loading = useSelector( state => state.weather.loading);
   const temperature = useSelector( state => state.weather.temperatures[0]);
@@ -16,7 +18,15 @@ const Weather = () => {
     
     const hourlyData = temperature?.hourly.temperature_2m;
     setTemp(hourlyData)
-  }, [])
+    setRefreshTrigger(false)
+  }, [refreshTrigger])
+
+  const handleRefresh = (e) => {
+    setTimeout(()=> {
+      e.detail.complete();
+      setRefreshTrigger(true)
+    }, 1500)
+  }
 
   console.log(temp)
 
@@ -31,12 +41,20 @@ const Weather = () => {
       <IonContent color='light'>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Weather</IonTitle>
+            <IonTitle>Weather</IonTitle>
           </IonToolbar>
         </IonHeader>
+        <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
+          <IonRefresherContent></IonRefresherContent>
+        </IonRefresher>
         <IonItem className='ion-padding'>
           <IonText>
               En segunda tab, se muestra en formato galeria diferentes datos. Aqui no se trabaja el post, sino al GET y como mostrar y ordenar diferentes elementos.
+          </IonText>
+        </IonItem>
+        <IonItem className='ion-padding'>
+          <IonText>
+              Esta ab tiene incorporado un componente de <strong>refresh trigger</strong>. Prueba a desplazar la pantalla hacía abajo y se disparará. Dura 1.5 segundos.
           </IonText>
         </IonItem>
         <IonGrid>

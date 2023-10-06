@@ -28,7 +28,7 @@ console.log(hourlyData)
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Dashboard</IonTitle>
+            <IonTitle>Dashboard</IonTitle>
           </IonToolbar>
           <IonItem>
             <IonText>

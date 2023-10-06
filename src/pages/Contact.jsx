@@ -25,7 +25,7 @@ const Contact = () => {
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Contact</IonTitle>
+            <IonTitle>Contact</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonItem className='ion-padding'>
