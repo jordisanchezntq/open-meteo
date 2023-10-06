@@ -10,6 +10,11 @@ const Button = styled.button`
     padding: 0.85rem 1rem;
     min-height: 24px;
     font-size: 1.1rem;
+    transisiton: all 0.3s ease;
+
+    &:active {
+        background-color: #b68d00
+    }
 `
 
 export default Button;

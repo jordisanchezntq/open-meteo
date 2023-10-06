@@ -6,7 +6,7 @@ import DashboardCard from '../components/DashboardCard';
 import SearchBar from '../components/SearchBar'
 
 // Styled
-import Button from '../components/Button'
+import Button from '../styled/Button'
 
 const Dashboard = () => {
 const dispatch = useDispatch();
