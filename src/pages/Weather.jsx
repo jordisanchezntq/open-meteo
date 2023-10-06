@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem } from '@ionic/react';
 
 const Weather = () => {
   return (
@@ -8,16 +8,17 @@ const Weather = () => {
           <IonTitle>Weather</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen className='ion-padding'>
+      <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">Weather</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonText>
-            En segunda tab, se muestra en formato galeria diferentes datos. Aqui no se trabaja el post, sino al GET y como mostrar y ordenar diferentes elementos.
-        </IonText>
-       
+        <IonItem className='ion-padding'>
+          <IonText>
+              En segunda tab, se muestra en formato galeria diferentes datos. Aqui no se trabaja el post, sino al GET y como mostrar y ordenar diferentes elementos.
+          </IonText>
+        </IonItem>
       </IonContent>
     </IonPage>
   );

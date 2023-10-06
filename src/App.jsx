@@ -10,7 +10,7 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { ellipse, square, homeOutline } from 'ionicons/icons';
+import { appsOutline, mailOutline, homeOutline } from 'ionicons/icons';
 import Dashboard from './pages/Dashboard';
 import Weather from './pages/Weather';
 import Contact from './pages/Contact';
@@ -61,16 +61,16 @@ const App = () => (
             </Route>
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="tab1" href="/dashboard">
+            <IonTabButton tab="dashboard" href="/dashboard">
               <IonIcon aria-hidden="true" icon={homeOutline} />
               <IonLabel>Dashboard</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="tab2" href="/weather">
-              <IonIcon aria-hidden="true" icon={ellipse} />
+            <IonTabButton tab="weather" href="/weather">
+              <IonIcon aria-hidden="true" icon={appsOutline} />
               <IonLabel>Weather</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="tab3" href="/contact">
-              <IonIcon aria-hidden="true" icon={square} />
+            <IonTabButton tab="contact" href="/contact">
+              <IonIcon aria-hidden="true" icon={mailOutline} />
               <IonLabel>Contact</IonLabel>
             </IonTabButton>
           </IonTabBar>

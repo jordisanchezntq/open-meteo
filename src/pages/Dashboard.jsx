@@ -1,5 +1,4 @@
-import { IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonContent, IonHeader, IonInput, IonItem, IonList, IonPage, IonSpinner, IonText, IonTitle, IonToolbar } from '@ionic/react';
-import { useEffect, useState } from 'react';
+import { IonButton, IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar } from '@ionic/react';
 // Actions redux
 import { getWeatherAction } from '../actions/weatherActions';
 import { useDispatch, useSelector } from 'react-redux'
@@ -31,13 +30,14 @@ console.log(hourlyData)
             <IonTitle size="large">Dashboard</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonContent class='ion-padding'>
+        <IonItem class='ion-padding'>
           <IonText>
             Esta es la versión prueba de una App para consultar datos de https://open-meteo.com/. En este caso, dividimos la app en 3 tabs. El primer tab, muestra una <strong>Card</strong> con la consulta a la Api que se realiza haciendo click en el siguiente botón:
           </IonText>
-            <IonButton
+        </IonItem>
+        <IonButton
               expand='block'
-              className='ion-margin-top'
+              className='ion-padding'
               onClick={handleGetWeather}
             >
               {
@@ -46,16 +46,15 @@ console.log(hourlyData)
                 : 'Consultar temperatura'
               }
             </IonButton>
-        </IonContent>
       </IonContent>
-      <IonContent className='ion-padding'>
+      <IonContent>
         {
           hourlyData
           ? (
              <DashboardCard hourlyData={hourlyData} />
           )
           : (
-            <IonText className='ion-text-center'>
+            <IonText className='ion-padding ion-text-center'>
               No has consultado nada :(
             </IonText>
           )
