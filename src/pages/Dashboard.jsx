@@ -5,6 +5,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import DashboardCard from '../components/DashboardCard';
 import SearchBar from '../components/SearchBar'
 
+// Styled
+import Button from '../components/Button'
+
 const Dashboard = () => {
 const dispatch = useDispatch();
 const loading = useSelector( state => state.weather.loading);
@@ -40,18 +43,18 @@ console.log(hourlyData)
           <SearchBar />
           <IonNote color="primary">Under...🚧 </IonNote>
         </IonItem>
-        <IonButton
-              expand='block'
-              className='ion-padding'
-              style={{fontSize: '20px'}}
-              onClick={handleGetWeather}
-            >
-              {
-                loading
-                ? ( <IonSpinner></IonSpinner> )
-                : 'Consultar temperatura'
-              }
-        </IonButton>
+        <IonItem>
+          <Button
+                className='ion-padding'
+                onClick={handleGetWeather}
+              >
+                {
+                  loading
+                  ? ( <IonSpinner color='light'></IonSpinner> )
+                  : 'Consultar temperatura'
+                }
+          </Button>
+        </IonItem>
           {
             hourlyData
             ? (
@@ -59,7 +62,7 @@ console.log(hourlyData)
               )
               : (
                 <IonItem>
-                  <IonText style={{ fontSize: '20px'}}>
+                  <IonText style={{ fontSize: '16px'}}>
                     No has consultado nada :( dale click!!
                   </IonText>
                 </IonItem>
