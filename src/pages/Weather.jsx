@@ -11,14 +11,10 @@ const Weather = () => {
   const dispatch = useDispatch();
   const loading = useSelector( state => state.weather.loading);
   const temperature = useSelector( state => state.weather.temperature);
+  const location = useSelector( state => state.location.city)
 
   useEffect(() => {
-    const getTemperatures = () => dispatch( fetchWeatherInfo() );
-    getTemperatures();
-    
-    const hourlyData = temperature?.hourly.temperature_2m;
-    setTemp(hourlyData)
-    setRefreshTrigger(false)
+   
   }, [refreshTrigger])
 
   const handleRefresh = (e) => {
@@ -57,7 +53,7 @@ const Weather = () => {
               Esta ab tiene incorporado un componente de <strong>refresh trigger</strong>. Prueba a desplazar la pantalla hacía abajo y se disparará. Dura 1.5 segundos.
           </IonText>
         </IonItem>
-        <IonGrid>
+        {/* <IonGrid>
           { temp &&
             temp.map((degree, i) => (
               i % 2 === 0 ? (
@@ -68,7 +64,7 @@ const Weather = () => {
               ) : null
             ))
           }
-        </IonGrid>
+        </IonGrid> */}
       </IonContent>
     </IonPage>
   );

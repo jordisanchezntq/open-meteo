@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
+import { setLocationAction } from '../location/slice'
 
 const initialState = {
     temperature: null,
+    location: null,
     loading: false,
     error: null
 }
@@ -33,11 +35,15 @@ export const weatherSlice = createSlice({
     },
 })
 
-export const fetchWeatherInfo = () => async (dispatch) => {
+export const fetchWeatherInfo = (city) => async (dispatch) => {
     dispatch(getInfo());
 
+    // Destructuring info
+    const { latitude, longitude } = city;
+
     try {
-        const res = await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.3888&longitude=2.159&hourly=temperature_2m,rain&timezone=GMT');
+
+        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,rain&timezone=GMT`);
         const data = await res.json();
         dispatch(getInfoSuccess(data));
     } catch (error) {

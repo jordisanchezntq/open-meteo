@@ -1,12 +1,14 @@
 import styled from 'styled-components'
-import { IonButton } from '@ionic/react'
 
-const Button = styled(IonButton)`
-    margin: 0 auto;
+const Button = styled.button`
+    display: block;
+    background-color: #ffc500;
+    font-size: 18px;
+    margin: 10px auto;
     color: #000;
     cursor: pointer;
     border-radius: 50px !important;
-    width: 260px;
+    width: 100%;
     padding: 1rem;
     min-height: 44px;
 `

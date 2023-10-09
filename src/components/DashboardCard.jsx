@@ -1,19 +1,42 @@
-import { IonCard, IonCardHeader, IonCardTitle, IonCardContent } from "@ionic/react";
+import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonItemDivider } from "@ionic/react";
+import styled from 'styled-components'
 
-const DashboardCard = ({hourlyData}) => {
+const TemperatureList = styled.li`
+font-size: 22px;
+padding: 5px;
+`
+
+const DashboardCard = ({temperature, location}) => {
+
+  const infoTemp = temperature.hourly.temperature_2m;
+  const maxTemp = Math.max(...infoTemp);
+  const minTemp = Math.min(...infoTemp);
 
     return (
       <IonCard>
-        <IonCardHeader color='primary'>
+        <IonCardHeader color='dark'>
           <IonCardTitle className='ion-text-center' style={{ fontSize: '20px'}}>
             Últimas temperaturas:
           </IonCardTitle>
         </IonCardHeader>
-        <IonCardContent className='ion-padding ion-text-center'>
-          <ul style={{listStyle: 'none', textAlign: 'start'}}>
-            { hourlyData.map((degree, i) => (
-              <li key={i} style={{fontSize: '18px'}}>{degree} &deg;C</li>
-            ))}
+        <IonCardContent className='ion-text-center'>
+          <ul style={{listStyle: 'none', textAlign: 'start', padding: 0}}>
+            <IonItemDivider color={'warning'}>
+              <TemperatureList>
+                Ciudad consultada: <br />
+                {location.results[0].name}
+              </TemperatureList>
+            </IonItemDivider>
+            <IonItemDivider color={'danger'}>
+              <TemperatureList>
+                Temp. máxima: {maxTemp} &deg;C
+              </TemperatureList>
+            </IonItemDivider>
+            <IonItemDivider color={'secondary'}>
+              <TemperatureList>
+                Temp. mínimo {minTemp} &deg;C
+              </TemperatureList>
+            </IonItemDivider>
           </ul>
         </IonCardContent>
       </IonCard>
