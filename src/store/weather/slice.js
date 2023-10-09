@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { setLocationAction } from '../location/slice'
 
 const initialState = {
     temperature: null,

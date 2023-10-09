@@ -1,26 +1,17 @@
-import { IonButton, IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, IonGrid, IonRow, IonCol } from '@ionic/react';
-import { useDispatch, useSelector } from 'react-redux'
-import { fetchWeatherInfo } from '../store/weather/slice';
-
+import { IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, IonGrid, IonRow, IonCol } from '@ionic/react';
 import DashboardCard from '../components/DashboardCard';
 import SearchBar from '../components/SearchBar'
+import useWeatherActions from '../hooks/useWeatherActions';
+import { useSelector } from 'react-redux';
 
 // Styled
 import Button from '../styled/Button'
 
 const Dashboard = () => {
-const dispatch = useDispatch();
-const loading = useSelector( state => state.weather.loading);
-const temperature = useSelector( state => state.weather.temperature);
-const location = useSelector( state => state.location.city)
+  const { handleGetWeather } = useWeatherActions();
+  const loading = useSelector( state => state.weather.loading);
+  const temperature = useSelector( state => state.weather.temperature);
 
-const handleGetWeather = async () => {
-  if(location.results) {
-    const locaInput = location.results[0];
-    const infoFetch = () => dispatch( fetchWeatherInfo(locaInput));
-    infoFetch();
-  }
-}
 
   return (
     <IonPage>
