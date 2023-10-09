@@ -17,7 +17,7 @@ import Contact from './pages/Contact';
 
 // Redux
 import { Provider} from 'react-redux';
-import store from './store';
+import store from './store/store.js';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -43,7 +43,6 @@ setupIonicReact();
 const App = () => (
   <IonApp>
     <Provider store={store}>
-
       <IonReactRouter>
         <IonTabs>
           <IonRouterOutlet>

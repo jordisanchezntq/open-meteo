@@ -1,7 +1,7 @@
 import { IonButton, IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, IonNote } from '@ionic/react';
 // Actions redux
-import { getWeatherAction } from '../actions/weatherActions';
 import { useDispatch, useSelector } from 'react-redux'
+import { fetchWeatherInfo } from '../store/weather/slice';
 import DashboardCard from '../components/DashboardCard';
 import SearchBar from '../components/SearchBar'
 
@@ -11,15 +11,15 @@ import Button from '../styled/Button'
 const Dashboard = () => {
 const dispatch = useDispatch();
 const loading = useSelector( state => state.weather.loading);
-const temperature = useSelector( state => state.weather.temperatures[0]);
+const temperature = useSelector( state => state.weather.temperature);
 
 const handleGetWeather = () => {
-  dispatch( getWeatherAction())
+  dispatch( fetchWeatherInfo())
 }
 
-// Getting values
-const hourlyData = temperature?.hourly.temperature_2m;
-console.log(hourlyData)
+// creating variables to display
+const hourlyData = temperature.hourly.temperature_2m;
+
 
   return (
     <IonPage>
@@ -50,13 +50,13 @@ console.log(hourlyData)
               >
                 {
                   loading
-                  ? ( <IonSpinner color='light'></IonSpinner> )
-                  : 'Consultar temperatura'
+                  ? (<IonSpinner></IonSpinner>)
+                  : 'Consultar tiempo'
                 }
           </Button>
         </IonItem>
           {
-            hourlyData
+            temperature
             ? (
               <DashboardCard hourlyData={hourlyData} />
               )

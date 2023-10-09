@@ -2,7 +2,7 @@ import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem,
   IonRefresherContent } from '@ionic/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
-import { getWeatherAction } from '../actions/weatherActions';
+import { fetchWeatherInfo } from '../store/weather/slice';
 
 
 const Weather = () => {
@@ -10,10 +10,10 @@ const Weather = () => {
   const [ refreshTrigger, setRefreshTrigger ] = useState(false);
   const dispatch = useDispatch();
   const loading = useSelector( state => state.weather.loading);
-  const temperature = useSelector( state => state.weather.temperatures[0]);
+  const temperature = useSelector( state => state.weather.temperature);
 
   useEffect(() => {
-    const getTemperatures = () => dispatch( getWeatherAction() );
+    const getTemperatures = () => dispatch( fetchWeatherInfo() );
     getTemperatures();
     
     const hourlyData = temperature?.hourly.temperature_2m;
