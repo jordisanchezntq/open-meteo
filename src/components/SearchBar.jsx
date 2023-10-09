@@ -8,6 +8,7 @@ function Example() {
   const dispatch = useDispatch();
 
   useEffect(()=> {
+    console.log(searchLocation)
     dispatch(setLocationAction(searchLocation))
   }, [searchLocation])
 
@@ -15,7 +16,7 @@ function Example() {
     <div>
       <IonSearchbar
       value={searchLocation}
-      onIonChange={e => setSearchLocation(e.target.value)}
+      onIonInput={e => setSearchLocation(e.target.value)}
       placeholder="Buscar ciudad"
       color={'dark'}
       animated={true}

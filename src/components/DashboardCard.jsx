@@ -24,7 +24,7 @@ const DashboardCard = ({temperature, location}) => {
             <IonItemDivider color={'warning'}>
               <TemperatureList>
                 Ciudad consultada: <br />
-                {location.results[0].name}
+                {location.results && location.results[0].name}
               </TemperatureList>
             </IonItemDivider>
             <IonItemDivider color={'danger'}>

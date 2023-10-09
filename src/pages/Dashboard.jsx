@@ -13,9 +13,6 @@ const Dashboard = () => {
   const temperature = useSelector( state => state.weather.temperature);
   const location = useSelector( state => state.location.city)
 
-  console.log(temperature)
-
-
   return (
     <IonPage>
       <IonHeader>
