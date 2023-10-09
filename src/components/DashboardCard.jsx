@@ -21,7 +21,7 @@ const DashboardCard = ({temperature, location}) => {
         </IonCardHeader>
         <IonCardContent className='ion-text-center'>
           <ul style={{listStyle: 'none', textAlign: 'start', padding: 0}}>
-            <IonItemDivider color={'warning'}>
+            <IonItemDivider color={'dark'}>
               <TemperatureList>
                 Ciudad consultada: <br />
                 {location.results && location.results[0].name}
@@ -34,7 +34,7 @@ const DashboardCard = ({temperature, location}) => {
             </IonItemDivider>
             <IonItemDivider color={'secondary'}>
               <TemperatureList>
-                Temp. mínimo {minTemp} &deg;C
+                Temp. mínima {minTemp} &deg;C
               </TemperatureList>
             </IonItemDivider>
           </ul>

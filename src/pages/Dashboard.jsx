@@ -55,8 +55,8 @@ const Dashboard = () => {
               )
               : (
                 <IonItem>
-                  <IonText style={{ fontSize: '16px'}}>
-                    No has consultado nada :( dale click!!
+                  <IonText className='ion-padding' style={{ fontSize: '16px'}}>
+                    Inroduce una ciudad y dale click! 🙂 
                   </IonText>
                 </IonItem>
             )
