@@ -2,6 +2,8 @@ import {useEffect, useState} from 'react';
 import { IonSearchbar, IonButton, IonItem } from '@ionic/react';
 import { setLocationAction } from '../store/location/slice';
 import { useDispatch } from 'react-redux';
+import Button from '../styled/Button';
+import { resetInfo } from '../store/weather/slice';
 
 function Example() {
   const [searchLocation, setSearchLocation] = useState('');
@@ -13,19 +15,20 @@ function Example() {
   }, [searchLocation])
 
   return (
-    <IonItem style={{ display: 'flex'}}>
+    <IonItem style={{ display: 'flex', flexDirection: 'column'}}>
       <IonSearchbar
       value={searchLocation}
       onIonInput={e => setSearchLocation(e.target.value)}
       placeholder="Buscar ciudad"
       color={'dark'}
       animated={true}
-      onClo
+      showCancelButton="always"
+      onIonCancel={() => {
+        setSearchLocation(''); 
+        dispatch(resetInfo(searchLocation))
+      }}
       >
       </IonSearchbar>
-      <IonButton
-      color={'danger'}
-      onClick={() => setSearchLocation('')}>Borrar input</IonButton>
     </IonItem>
   );
 }

@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     temperature: null,
-    location: null,
     loading: false,
     error: null
 }
@@ -30,6 +29,11 @@ export const weatherSlice = createSlice({
                 loading: false,
                 error: action.payload
             }
+        },
+        resetInfo: (state, action) => {
+            return {
+                temperature: action.payload
+            }
         }
     },
 })
@@ -41,7 +45,6 @@ export const fetchWeatherInfo = (city) => async (dispatch) => {
     const { latitude, longitude } = city;
 
     try {
-
         const res = await fetch(`${import.meta.env.VITE_API_METEO}forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,rain&timezone=GMT`);
         const data = await res.json();
         dispatch(getInfoSuccess(data));
@@ -53,4 +56,4 @@ export const fetchWeatherInfo = (city) => async (dispatch) => {
 
 export default weatherSlice.reducer;
 
-export const { getInfo, getInfoSuccess, getInfoError } = weatherSlice.actions;
+export const { getInfo, getInfoSuccess, getInfoError, resetInfo } = weatherSlice.actions;

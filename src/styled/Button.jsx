@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const Button = styled.button`
     display: block;
-    background-color: var(--ion-color-primary);
+    background-color: ${props => props.$bgColor || '#105ae1'};
     font-size: 18px;
     margin: 10px auto;
     color: var(--ion-color-primary-contrast);

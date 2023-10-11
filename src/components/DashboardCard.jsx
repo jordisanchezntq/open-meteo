@@ -26,7 +26,6 @@ const DashboardCard = ({temp, index}) => {
             ></IonIcon>
           </div>
         </IonCardHeader>
-
         <IonCardContent className="ion-margin-top ion-text-center" style={{ fontSize: '22px', color: 'var(--ion-color-dark'}}> {temp} &deg;C</IonCardContent>
       </IonCard>
     )
