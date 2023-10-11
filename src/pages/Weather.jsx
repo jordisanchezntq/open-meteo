@@ -2,6 +2,7 @@ import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem,
   IonRefresherContent } from '@ionic/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
+import Header from '../components/Header';
 import { fetchWeatherInfo } from '../store/weather/slice';
 
 
@@ -29,26 +30,22 @@ const Weather = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Weather</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent color='light' fullscreen={true}>
+      <Header />
+      <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
-          <IonToolbar color='primary'>
+          <IonToolbar>
             <IonTitle>Weather</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
-        <IonItem color='primary'>
+        <IonItem>
           <IonText style={{ padding: '10px 0px'}}>
               En segunda tab, se muestra en formato galeria diferentes datos. Aqui no se trabaja el post, sino al GET y como mostrar y ordenar diferentes elementos.
           </IonText>
         </IonItem>
-        <IonItem color='primary'>
+        <IonItem>
           <IonText style={{ padding: '10px 0px'}}>
               Esta ab tiene incorporado un componente de <strong>refresh trigger</strong>. Prueba a desplazar la pantalla hacía abajo y se disparará. Dura 1.5 segundos.
           </IonText>

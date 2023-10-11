@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, IonGrid, IonRow, IonCol } from '@ionic/react';
+import { IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonImg } from '@ionic/react';
 import DashboardCard from '../components/DashboardCard';
 import SearchBar from '../components/SearchBar'
 import useWeatherActions from '../hooks/useWeatherActions';
@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 // Styled
 import Button from '../styled/Button'
+import Header from '../components/Header';
 
 const Dashboard = () => {
   const { handleGetWeather } = useWeatherActions();
@@ -17,11 +18,7 @@ const Dashboard = () => {
 
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Dashboard</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header />
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
@@ -53,8 +50,10 @@ const Dashboard = () => {
           {
             temperature && temperature.hourly
             ? (
-              temperature.hourly.temperature_2m.map((temp, index) => (
-                <DashboardCard key={index} temp={temp} />
+              temperature.hourly.temperature_2m
+              .slice(0, 10)
+              .map((temp, index) => (
+                <DashboardCard key={index} temp={temp} index={index} />
               ))
               )
               : (

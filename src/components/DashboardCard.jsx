@@ -3,8 +3,8 @@ import styled from 'styled-components';
 import { close } from 'ionicons/icons';
 import { useState } from "react";
 
-const DashboardCard = ({temp}) => {
-  const [ isCardClosed, setIsCardClosed ] = useState(false)
+const DashboardCard = ({temp, index}) => {
+  const [ isCardClosed, setIsCardClosed ] = useState(false);
 
   const handleCloseCard = () => {
     setIsCardClosed(true);
@@ -14,9 +14,9 @@ const DashboardCard = ({temp}) => {
   // const minTemp = Math.min(...infoTemp);
 
     return (
-      <IonCard style={{ display: isCardClosed ? 'none' : 'block' }}>
-        <IonCardHeader>
-          <IonCardTitle>Temperatura</IonCardTitle>
+      <IonCard className={ isCardClosed ? 'ion-hide' : '' }>
+        <IonCardHeader color={'primary'}>
+          <IonCardTitle>Temperatura {index + 1}</IonCardTitle>
           <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <div></div> {/* Esto crea un espacio en blanco */}
             <IonIcon 
@@ -27,7 +27,7 @@ const DashboardCard = ({temp}) => {
           </div>
         </IonCardHeader>
 
-        <IonCardContent>{temp} &deg;C</IonCardContent>
+        <IonCardContent className="ion-margin-top ion-text-center" style={{ fontSize: '22px', color: 'var(--ion-color-dark'}}> {temp} &deg;C</IonCardContent>
       </IonCard>
     )
 

@@ -13,15 +13,12 @@ import {
   IonPage,
   IonText
 } from '@ionic/react';
+import Header from '../components/Header';
 
 const Contact = () => {
   return (
     <IonPage>
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Contact</IonTitle>
-        </IonToolbar>
-      </IonHeader>
+      <Header />
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
@@ -33,7 +30,7 @@ const Contact = () => {
               En esta tercera tab, se simula un formulario de contacto que finalizará con la creación del objeto con los datos introducidos en el state d ela aplicación, y se trabajará con la validación de los inputs.
           </IonText>
         </IonItem>
-        <IonContent color="light">
+        <IonContent>
         <IonList inset={true}>
           <IonItem>
             <IonInput label="Nombre"></IonInput>
