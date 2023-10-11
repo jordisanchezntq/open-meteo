@@ -42,7 +42,7 @@ export const fetchWeatherInfo = (city) => async (dispatch) => {
 
     try {
 
-        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,rain&timezone=GMT`);
+        const res = await fetch(`${import.meta.env.VITE_API_METEO}forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,rain&timezone=GMT`);
         const data = await res.json();
         dispatch(getInfoSuccess(data));
     } catch (error) {

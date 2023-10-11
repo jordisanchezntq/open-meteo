@@ -37,7 +37,7 @@ export const setLocationAction = (city) => async (dispatch) => {
     dispatch(setLocation())
 
     try {
-        const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&count=1&language=en&format=json`);
+        const res = await fetch(`${import.meta.env.VITE_API_GEOCODING}search?name=${city}&count=1&language=en&format=json`);
         const locData = await res.json();
         dispatch(setLocationSuccess(locData))
     } catch (error) {

@@ -14,8 +14,6 @@ const Dashboard = () => {
   const temperature = useSelector( state => state.weather.temperature);
   const location = useSelector( state => state.location.city);
 
-  console.log(temperature)
-
   return (
     <IonPage>
       <Header />
@@ -36,7 +34,8 @@ const Dashboard = () => {
               <IonCol>
                 <SearchBar/>
                 <Button
-                  className='ion-padding'
+                  className={`${loading ? 'ion-opacity': ''} ion-padding`}
+                  style={loading ? {backgroundColor: 'var(--ion-color-secondary)'} : {}}
                   onClick={handleGetWeather}
                   disabled={loading}
                   expand='block'
