@@ -25,8 +25,8 @@ const Profile = () => {
             <IonTitle>Profile</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonItem className='ion-padding'>
-          <IonText>
+        <IonItem>
+          <IonText style={{ padding: '10px 0px'}}>
             En esta tab se simula el dashboard de info personal, y acciones de cambiar email y la password.
           </IonText>
         </IonItem>

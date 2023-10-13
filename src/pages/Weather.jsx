@@ -1,9 +1,8 @@
-import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem, IonCol, IonGrid, IonRow, IonRefresher,
-  IonRefresherContent } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem, IonCol, IonGrid, IonRow, IonRefresher, IonRefresherContent, IonImg } from '@ionic/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import { fetchWeatherInfo } from '../store/weather/slice';
+import { thermometerOutline } from 'ionicons/icons'
 
 
 const Weather = () => {
@@ -14,19 +13,12 @@ const Weather = () => {
   const temperature = useSelector( state => state.weather.temperature);
   const location = useSelector( state => state.location.city)
 
-  useEffect(() => {
-   
-  }, [refreshTrigger])
-
   const handleRefresh = (e) => {
     setTimeout(()=> {
       e.detail.complete();
       setRefreshTrigger(true)
     }, 1500)
   }
-
-  console.log(temp)
-
 
   return (
     <IonPage>
@@ -45,23 +37,28 @@ const Weather = () => {
               En segunda tab, se muestra en formato galeria diferentes datos. Aqui no se trabaja el post, sino al GET y como mostrar y ordenar diferentes elementos.
           </IonText>
         </IonItem>
-        <IonItem>
-          <IonText style={{ padding: '10px 0px'}}>
-              Esta ab tiene incorporado un componente de <strong>refresh trigger</strong>. Prueba a desplazar la pantalla hacía abajo y se disparará. Dura 1.5 segundos.
-          </IonText>
-        </IonItem>
-        {/* <IonGrid>
-          { temp &&
-            temp.map((degree, i) => (
-              i % 2 === 0 ? (
-                <IonRow key={i}>
-                  <IonCol className="ion-text-center">{degree} &deg; C</IonCol>
-                  {temp[i + 1] && <IonCol className='ion-text-center'>{temp[i + 1]}</IonCol>}
-                </IonRow>
-              ) : null
-            ))
+        <IonGrid>
+          {
+            temperature && temperature.hourly ? (
+              temperature.hourly.temperature_2m.map((degree, i) => (
+                i % 2 === 0 ? (
+                  <IonRow key={i}>
+                    <IonCol className="ion-text-center">{degree} &deg; C</IonCol>
+                    {temperature.hourly.temperature_2m[i] && (
+                      <IonCol className="ion-text-center">
+                        <IonImg src='/tree.jpeg' />
+                      </IonCol>
+                    )}
+                  </IonRow>
+                ) : (
+                  null // Puedes usar 'null' en lugar de una cadena vacía.
+                )
+              ))
+            ) : (
+              null // Puedes usar 'null' en lugar de una cadena vacía.
+            )
           }
-        </IonGrid> */}
+        </IonGrid>
       </IonContent>
     </IonPage>
   );

@@ -20,7 +20,6 @@ function Example() {
       onIonInput={e => setSearchLocation(e.target.value)}
       placeholder="Buscar ciudad"
       color={'dark'}
-      animated={true}
       showCancelButton="always"
       onIonCancel={() => {
         setSearchLocation(''); 
