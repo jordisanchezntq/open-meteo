@@ -15,19 +15,19 @@ import {
 } from '@ionic/react';
 import Header from '../components/Header';
 
-const Contact = () => {
+const Profile = () => {
   return (
     <IonPage>
       <Header />
       <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle>Contact</IonTitle>
+            <IonTitle>Profile</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonItem className='ion-padding'>
           <IonText>
-              En esta tercera tab, se simula un formulario de contacto que finalizará con la creación del objeto con los datos introducidos en el state d ela aplicación, y se trabajará con la validación de los inputs.
+            En esta tab se simula el dashboard de info personal, y acciones de cambiar email y la password.
           </IonText>
         </IonItem>
         <IonContent>
@@ -58,4 +58,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Profile;

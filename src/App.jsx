@@ -10,10 +10,10 @@ import {
   setupIonicReact
 } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
-import { appsOutline, mailOutline, homeOutline } from 'ionicons/icons';
+import { appsOutline, personCircleOutline, homeOutline } from 'ionicons/icons';
 import Dashboard from './pages/Dashboard';
 import Weather from './pages/Weather';
-import Contact from './pages/Contact';
+import Contact from './pages/Profile';
 
 // Redux
 import { Provider} from 'react-redux';
@@ -52,7 +52,7 @@ const App = () => (
             <Route exact path="/weather">
               <Weather />
             </Route>
-            <Route path="/contact">
+            <Route path="/profile">
               <Contact />
             </Route>
             <Route exact path="/">
@@ -68,9 +68,9 @@ const App = () => (
               <IonIcon aria-hidden="true" icon={appsOutline} />
               <IonLabel>Weather</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="contact" href="/contact">
-              <IonIcon aria-hidden="true" icon={mailOutline} />
-              <IonLabel>Contact</IonLabel>
+            <IonTabButton tab="profile" href="/profile">
+              <IonIcon aria-hidden="true" icon={personCircleOutline} />
+              <IonLabel>Profile</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

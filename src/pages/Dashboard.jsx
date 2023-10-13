@@ -1,18 +1,27 @@
-import { IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonImg } from '@ionic/react';
+import { IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonAlert } from '@ionic/react';
 import DashboardCard from '../components/DashboardCard';
 import SearchBar from '../components/SearchBar'
 import useWeatherActions from '../hooks/useWeatherActions';
 import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 // Styled
 import Button from '../styled/Button'
 import Header from '../components/Header';
 
 const Dashboard = () => {
+  const [isOpen, setIsOpen] = useState(false);
   const { handleGetWeather } = useWeatherActions();
   const loading = useSelector( state => state.weather.loading);
   const temperature = useSelector( state => state.weather.temperature);
   const location = useSelector( state => state.location.city);
+  const error = useSelector(state => state.weather.error);
+
+  useEffect(() => {
+    if (error) {
+      setIsOpen(true);
+    }
+  }, [error]);
 
   return (
     <IonPage>
@@ -46,23 +55,41 @@ const Dashboard = () => {
             </IonRow>
           </IonGrid>
         </IonItem>
-          {
-            temperature && temperature.hourly
-            ? (
-              temperature.hourly.temperature_2m
-              .slice(0, 10)
-              .map((temp, index) => (
-                <DashboardCard key={index} temp={temp} index={index} />
-              ))
-              )
-              : (
-                <IonItem>
-                  <IonText className='ion-padding' style={{ fontSize: '16px'}}>
-                    Introduce una ciudad y dale click! 🙂 
-                  </IonText>
-                </IonItem>
-            )
-          }
+        {
+          error ? (
+            <IonAlert
+              isOpen={isOpen}
+              header="Ops!"
+              message="Debes introducir una ciudad"
+              buttons={[
+                {
+                  text: 'Ok!',
+                }
+              ]}
+              onDidDismiss={() => setIsOpen(false)}
+            ></IonAlert>
+          ) : (
+            <>
+              {
+                temperature && temperature.hourly
+                ? (
+                  temperature.hourly.temperature_2m
+                  .slice(0, 10)
+                  .map((temp, index) => (
+                    <DashboardCard key={index} temp={temp} index={index} />
+                  ))
+                  )
+                  : (
+                    <IonItem>
+                      <IonText className='ion-padding' style={{ fontSize: '16px'}}>
+                        Introduce una ciudad y dale click! 🙂 
+                      </IonText>
+                    </IonItem>
+                )
+              }
+            </>
+          )
+        }
       </IonContent>
     </IonPage>
   );

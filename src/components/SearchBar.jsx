@@ -10,14 +10,13 @@ function Example() {
   const dispatch = useDispatch();
 
   useEffect(()=> {
-    console.log(searchLocation)
     dispatch(setLocationAction(searchLocation))
   }, [searchLocation])
 
   return (
     <IonItem style={{ display: 'flex', flexDirection: 'column'}}>
       <IonSearchbar
-      value={searchLocation}
+      value={searchLocation || ''}
       onIonInput={e => setSearchLocation(e.target.value)}
       placeholder="Buscar ciudad"
       color={'dark'}

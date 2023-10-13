@@ -26,6 +26,7 @@ export const weatherSlice = createSlice({
         },
         getInfoError: (state, action) => {
             return {
+                ...state,
                 loading: false,
                 error: action.payload
             }
@@ -39,6 +40,11 @@ export const weatherSlice = createSlice({
 })
 
 export const fetchWeatherInfo = (city) => async (dispatch) => {
+    if(city === null) {
+        dispatch(getInfoError(true));
+        return
+    };
+    
     dispatch(getInfo());
 
     // Destructuring info
@@ -50,7 +56,7 @@ export const fetchWeatherInfo = (city) => async (dispatch) => {
         dispatch(getInfoSuccess(data));
     } catch (error) {
         console.log(error);
-        dispatch(getInfoError())
+        dispatch(getInfoError(true))
     }
 }
 
