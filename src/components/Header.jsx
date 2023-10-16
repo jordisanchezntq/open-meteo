@@ -1,10 +1,8 @@
-import { IonImg, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem, IonCol, IonGrid, IonRow, IonRefresher,
-    IonRefresherContent, 
-    IonButtons} from '@ionic/react';
+import { IonImg, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonButtons, IonButton} from '@ionic/react';
  const Header = () => {
     return (
         <IonHeader>
-            <IonToolbar color={'primary'} style={{ padding: '0px 15px'}}>
+            <IonToolbar color={'primary'} style={{ padding: '10px 15px'}}>
                 <IonButtons>
                     <IonImg
                     slot='start'
@@ -17,7 +15,9 @@ import { IonImg, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem, Ion
                 <IonButtons
                 slot='end'
                 >
-                    Login
+                    <IonButton color={'light'} shape='round' fill='solid'>
+                        Login
+                    </IonButton>
                 </IonButtons>
             </IonToolbar>
         </IonHeader>

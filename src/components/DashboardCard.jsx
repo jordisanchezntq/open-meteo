@@ -1,13 +1,20 @@
 import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonItemDivider, IonIcon } from "@ionic/react";
-import styled from 'styled-components';
+import { useDispatch } from "react-redux";
 import { close } from 'ionicons/icons';
 import { useState } from "react";
+import { setTracingsAction } from "../store/traces/slice";
 
 const DashboardCard = ({temp, index}) => {
+  const dispatch = useDispatch();
   const [ isCardClosed, setIsCardClosed ] = useState(false);
 
-  const handleCloseCard = () => {
+  const handleCloseCard = (index) => {
     setIsCardClosed(true);
+
+    dispatch(setTracingsAction({
+      cardClosed: index,
+      lastInteraction: new Date().toISOString()
+    }))
   }
 
   // const maxTemp = Math.max(...infoTemp);
@@ -22,7 +29,7 @@ const DashboardCard = ({temp, index}) => {
             <IonIcon 
             size={'large'} 
             icon={close}
-            onClick={handleCloseCard}
+            onClick={() => handleCloseCard(index)}
             ></IonIcon>
           </div>
         </IonCardHeader>

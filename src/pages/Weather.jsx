@@ -38,27 +38,26 @@ const Weather = () => {
           </IonText>
         </IonItem>
         <IonGrid>
-          {
+          {location ? (
             temperature && temperature.hourly ? (
-              temperature.hourly.temperature_2m.map((degree, i) => (
+              temperature.hourly.temperature_2m.map((degree, i) =>
                 i % 2 === 0 ? (
                   <IonRow key={i}>
                     <IonCol className="ion-text-center">{degree} &deg; C</IonCol>
                     {temperature.hourly.temperature_2m[i] && (
                       <IonCol className="ion-text-center">
-                        <IonImg src='/tree.jpeg' />
+                        <IonImg src="/tree.jpeg" />
                       </IonCol>
                     )}
                   </IonRow>
-                ) : (
-                  null // Puedes usar 'null' en lugar de una cadena vacía.
-                )
-              ))
-            ) : (
-              null // Puedes usar 'null' en lugar de una cadena vacía.
-            )
-          }
+                ) : null
+              )
+            ) : null
+          ) : (
+            <IonItem>Selecciona una localización en la página Dashboard</IonItem>
+          )}
         </IonGrid>
+
       </IonContent>
     </IonPage>
   );
