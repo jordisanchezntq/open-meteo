@@ -1,6 +1,6 @@
 import {useEffect, useState} from 'react';
 import { IonSearchbar, IonButton, IonItem } from '@ionic/react';
-import { setLocationAction } from '../store/location/slice';
+import { fetchLocation } from '../store/location/slice';
 import { useDispatch } from 'react-redux';
 import { resetInfo } from '../store/weather/slice';
 import { addUserTrace } from '../store/traces/slice';
@@ -10,12 +10,14 @@ function Example() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(setLocationAction(searchLocation));
+    dispatch(fetchLocation(searchLocation));
   }, [searchLocation])
 
   const handleClosingCard = () => {
+    console.log('click')
     setSearchLocation(''); 
-    dispatch(resetInfo(searchLocation))
+    const reset = () => dispatch(resetInfo())
+    reset();
   }
 
   return (
@@ -26,7 +28,7 @@ function Example() {
       placeholder="Buscar ciudad"
       color={'dark'}
       showCancelButton="always"
-      onIonCancel={() => {handleClosingCard}}
+      onIonCancel={()=> handleClosingCard()}
       >
       </IonSearchbar>
     </IonItem>

@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     city: null,
@@ -10,42 +10,29 @@ export const locationSlice = createSlice({
     name: 'location',
     initialState,
     reducers: {
-        setLocation: (state, action) => {
-            return {
-             ...state,
-             loading: true
-            }
-         },
-         setLocationSuccess: (state, action) => {
-             return {
-                 ...state,
-                 loading: false,
-                 city: action.payload,
-                 error: null
-             }
-         },
-         setLocationError: (state, action) => {
-             return {
-                 loading: false,
-                 error: action.payload
-             }
-         }
+    },
+    extraReducers: builder => {
+        builder.addCase(fetchLocation.pending, (state, action) => {
+            state.loading = true;
+        })
+        .addCase(fetchLocation.fulfilled, (state, action) => {
+            state.city = action.payload;
+        })
     }
 })
 
-export const setLocationAction = (city) => async (dispatch) => {
-    dispatch(setLocation())
-
-    try {
-        const res = await fetch(`${import.meta.env.VITE_API_GEOCODING}search?name=${city}&count=1&language=en&format=json`);
+export const fetchLocation = createAsyncThunk(
+    'location/fetchLocation',
+    async (city) => {
+        const res = await fetch(`${import.meta.env.VITE_API_GEOCODING}search?name=${city}&count=1&language=en&format=json`, {
+            method: 'GET'
+        });
         const locData = await res.json();
-        dispatch(setLocationSuccess(locData))
-    } catch (error) {
-        console.log(error);
-        dispatch(setLocationError())
+        return locData;
     }
-}
+)
+
 
 export default locationSlice.reducer;
 
-export const { setLocation, setLocationSuccess, setLocationError} = locationSlice.actions;
+export const { } = locationSlice.actions;

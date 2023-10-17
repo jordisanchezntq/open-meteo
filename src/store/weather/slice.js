@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
     temperature: null,
@@ -11,55 +11,38 @@ export const weatherSlice = createSlice({
     initialState,
     reducers: {
         getInfo: (state, action) => {
-           return {
-            ...state,
-            loading: true
-           }
-        },
-        getInfoSuccess: (state, action) => {
-            return {
-                ...state,
-                loading: false,
-                temperature: action.payload,
-                error: null
-            }
-        },
-        getInfoError: (state, action) => {
-            return {
-                ...state,
-                loading: false,
-                error: action.payload
-            }
+           state.temperature = action.payload;
         },
         resetInfo: (state, action) => {
-            return {
-                temperature: action.payload
-            }
+            state.temperature = action.payload;
         }
     },
+    extraReducers: builder => {
+        builder.addCase(fetchWeatherInfo.pending, (state, action) => {
+            state.loading = true;
+        })
+        .addCase(fetchWeatherInfo.fulfilled, (state, action) => {
+            state.temperature = action.payload;
+            state.loading = false;
+        })
+    }
 })
 
-export const fetchWeatherInfo = (city) => async (dispatch) => {
-    if(city === null) {
-        dispatch(getInfoError(true));
-        return
-    };
-    
-    dispatch(getInfo());
 
-    // Destructuring info
-    const { latitude, longitude } = city;
+export const fetchWeatherInfo = createAsyncThunk(
+    'weather/fetchWeather',
+    async (city) => {
+        // Destructuring info
+        const { latitude, longitude } = city;
 
-    try {
-        const res = await fetch(`${import.meta.env.VITE_API_METEO}forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,rain&timezone=GMT`);
+        const res = await fetch(`${import.meta.env.VITE_API_METEO}forecast?latitude=${latitude}&longitude=${longitude}&hourly=temperature_2m,rain&timezone=GMT`, {
+            method: 'GET'
+        });
         const data = await res.json();
-        dispatch(getInfoSuccess(data));
-    } catch (error) {
-        console.log(error);
-        dispatch(getInfoError(true))
+        return data;
     }
-}
+)
 
 export default weatherSlice.reducer;
 
-export const { getInfo, getInfoSuccess, getInfoError, resetInfo } = weatherSlice.actions;
+export const { getInfo, resetInfo } = weatherSlice.actions;

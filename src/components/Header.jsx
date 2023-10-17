@@ -1,4 +1,6 @@
-import { IonImg, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonButtons, IonButton} from '@ionic/react';
+import { IonImg, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon} from '@ionic/react';
+import { ellipsisHorizontalOutline } from 'ionicons/icons';
+
  const Header = () => {
     return (
         <IonHeader>
@@ -15,9 +17,7 @@ import { IonImg, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonButtons, 
                 <IonButtons
                 slot='end'
                 >
-                    <IonButton color={'light'} shape='round' fill='solid'>
-                        Login
-                    </IonButton>
+                    <IonIcon icon={ellipsisHorizontalOutline} />
                 </IonButtons>
             </IonToolbar>
         </IonHeader>

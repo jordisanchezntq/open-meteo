@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWeatherInfo } from '../store/weather/slice';
 import { addUserTrace } from "../store/traces/slice";
+import { fetchLocation } from '../store/location/slice'
 
 export const useWeatherActions = () => {
     const dispatch = useDispatch();
