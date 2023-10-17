@@ -2,16 +2,22 @@ import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem,
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import { thermometerOutline } from 'ionicons/icons'
+import { fetchProducts } from '../store/products/slice'
+import Element from '../styled/Element';
 
 
 const Weather = () => {
   const [ temp, setTemp ] = useState([]);
   const [ refreshTrigger, setRefreshTrigger ] = useState(false);
   const dispatch = useDispatch();
-  const loading = useSelector( state => state.weather.loading);
+  const loading = useSelector( state => state.products.loading);
   const temperature = useSelector( state => state.weather.temperature);
-  const location = useSelector( state => state.location.city)
+  const location = useSelector( state => state.location.city);
+  const products = useSelector( state => state.products)
+
+  useEffect(() => {
+    dispatch(fetchProducts())
+  }, [])
 
   const handleRefresh = (e) => {
     setTimeout(()=> {
@@ -19,6 +25,8 @@ const Weather = () => {
       setRefreshTrigger(true)
     }, 1500)
   }
+
+  console.log(products.products);
 
   return (
     <IonPage>
@@ -38,24 +46,18 @@ const Weather = () => {
           </IonText>
         </IonItem>
         <IonGrid>
-          {location ? (
-            temperature && temperature.hourly ? (
-              temperature.hourly.temperature_2m.map((degree, i) =>
-                i % 2 === 0 ? (
-                  <IonRow key={i}>
-                    <IonCol className="ion-text-center">{degree} &deg; C</IonCol>
-                    {temperature.hourly.temperature_2m[i] && (
-                      <IonCol className="ion-text-center">
-                        <IonImg src="/tree.jpeg" />
-                      </IonCol>
-                    )}
-                  </IonRow>
-                ) : null
-              )
-            ) : null
-          ) : (
-            <IonItem>Selecciona una localización en la página Dashboard</IonItem>
-          )}
+        {products.products.length > 0 ? (
+          <IonRow>
+            {products.products.map((product, index) => (
+              <IonCol size="6" key={product.id}>
+                <Element>
+                  <h4 style={{ flex: 1}}>{product.title}</h4>
+                  <IonImg src={product.image} style={{ flex: 2, objectFit: 'cover', maxHeight: '220px'}}/>
+                </Element>
+              </IonCol>
+            ))}
+          </IonRow>
+        ) : null}
         </IonGrid>
 
       </IonContent>

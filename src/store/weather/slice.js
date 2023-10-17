@@ -10,9 +10,6 @@ export const weatherSlice = createSlice({
     name: 'weather',
     initialState,
     reducers: {
-        getInfo: (state, action) => {
-           state.temperature = action.payload;
-        },
         resetInfo: (state, action) => {
             state.temperature = action.payload;
         }
@@ -23,6 +20,9 @@ export const weatherSlice = createSlice({
         })
         .addCase(fetchWeatherInfo.fulfilled, (state, action) => {
             state.temperature = action.payload;
+            state.loading = false;
+        })
+        .addCase(fetchWeatherInfo.rejected, (state, action) => {
             state.loading = false;
         })
     }
@@ -45,4 +45,4 @@ export const fetchWeatherInfo = createAsyncThunk(
 
 export default weatherSlice.reducer;
 
-export const { getInfo, resetInfo } = weatherSlice.actions;
+export const { resetInfo } = weatherSlice.actions;

@@ -12,7 +12,7 @@ export const locationSlice = createSlice({
     reducers: {
     },
     extraReducers: builder => {
-        builder.addCase(fetchLocation.pending, (state, action) => {
+        builder.addCase(fetchLocation.pending, (state) => {
             state.loading = true;
         })
         .addCase(fetchLocation.fulfilled, (state, action) => {

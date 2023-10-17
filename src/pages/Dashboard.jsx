@@ -44,7 +44,7 @@ const Dashboard = () => {
                 <SearchBar/>
                 <Button
                   className={`${loading ? 'ion-opacity': ''} ion-padding`}
-                  style={loading ? {backgroundColor: 'var(--ion-color-tertiary)'} : {}}
+                  style={loading ? {backgroundColor: 'var(--ion-color-danger)'} : {}}
                   onClick={handleGetWeather}
                   disabled={loading}
                   expand='block'
