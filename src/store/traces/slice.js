@@ -11,43 +11,16 @@ export const traceSlice = createSlice({
     initialState,
     reducers: {
         addUserTrace: (state, action) => {
-            return {
-                ...state,
-                loading: true
+            state.userTracing = {
+                ...state.userTracing,
+                ...action.payload
             }
-        },
-        addUserTraceSuccess: (state, action) => {
-            return {
-                ...state,
-                loading: false,
-                userTracing: {
-                    ...state.userTracing,
-                    ...action.payload
-                },
-                error: null
-            }
-        },
-        addUserTraceError: (state, action) => {
-            return {
-                ...state,
-                loading: false,
-                error: action.payload
-            }
-        },
+        }
     }
-})
-export const setTracingsAction = (trace) => async (dispatch) => {
-    dispatch(addUserTrace());
-    console.log(trace)
+});
 
-    try {
-        dispatch(addUserTraceSuccess(trace));   
-    } catch (error) {
-        console.log(error);
-        dispatch(addUserTraceError());
-    }
-}
+
 
 export default traceSlice.reducer;
 
-export const { addUserTrace, addUserTraceSuccess, addUserTraceError,} = traceSlice.actions;
+export const { addUserTrace } = traceSlice.actions;

@@ -2,7 +2,7 @@ import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, 
 import { useDispatch } from "react-redux";
 import { close } from 'ionicons/icons';
 import { useState } from "react";
-import { setTracingsAction } from "../store/traces/slice";
+import { addUserTrace } from "../store/traces/slice";
 
 const DashboardCard = ({temp, index}) => {
   const dispatch = useDispatch();
@@ -11,7 +11,7 @@ const DashboardCard = ({temp, index}) => {
   const handleCloseCard = (index) => {
     setIsCardClosed(true);
 
-    dispatch(setTracingsAction({
+    dispatch(addUserTrace({
       cardClosed: index,
       lastInteraction: new Date().toISOString()
     }))

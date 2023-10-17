@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { fetchWeatherInfo } from '../store/weather/slice';
-import { setTracingsAction } from "../store/traces/slice";
+import { addUserTrace } from "../store/traces/slice";
 
 export const useWeatherActions = () => {
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ export const useWeatherActions = () => {
         }
 
         // Adding tracing
-        const addTrace = () => dispatch(setTracingsAction({
+        const addTrace = () => dispatch(addUserTrace({
           locationSearched: location,
           lastInteraction: new Date().toISOString()
         }))

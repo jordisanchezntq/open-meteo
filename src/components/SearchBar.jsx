@@ -13,6 +13,11 @@ function Example() {
     dispatch(setLocationAction(searchLocation));
   }, [searchLocation])
 
+  const handleClosingCard = () => {
+    setSearchLocation(''); 
+    dispatch(resetInfo(searchLocation))
+  }
+
   return (
     <IonItem style={{ display: 'flex', flexDirection: 'column'}}>
       <IonSearchbar
@@ -21,10 +26,7 @@ function Example() {
       placeholder="Buscar ciudad"
       color={'dark'}
       showCancelButton="always"
-      onIonCancel={() => {
-        setSearchLocation(''); 
-        dispatch(resetInfo(searchLocation))
-      }}
+      onIonCancel={() => {handleClosingCard}}
       >
       </IonSearchbar>
     </IonItem>
