@@ -61,16 +61,13 @@ const App = () => (
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
             <IonTabButton tab="dashboard" href="/dashboard">
-              <IonIcon aria-hidden="true" icon={homeOutline} />
-              <IonLabel>Dashboard</IonLabel>
+              <IonIcon aria-hidden="true" icon={homeOutline} size='large' />
             </IonTabButton>
             <IonTabButton tab="weather" href="/weather">
-              <IonIcon aria-hidden="true" icon={appsOutline} />
-              <IonLabel>Weather</IonLabel>
+              <IonIcon aria-hidden="true" icon={appsOutline} size='large' />
             </IonTabButton>
             <IonTabButton tab="profile" href="/profile">
-              <IonIcon aria-hidden="true" icon={personCircleOutline} />
-              <IonLabel>Profile</IonLabel>
+              <IonIcon aria-hidden="true" icon={personCircleOutline} size='large' />
             </IonTabButton>
           </IonTabBar>
         </IonTabs>

@@ -21,7 +21,7 @@ function Example() {
   }
 
   return (
-    <IonItem style={{ display: 'flex', flexDirection: 'column'}}>
+    <IonItem color='light' style={{ display: 'flex', flexDirection: 'column'}}>
       <IonSearchbar
       value={searchLocation || ''}
       onIonInput={e => setSearchLocation(e.target.value)}
