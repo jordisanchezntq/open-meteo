@@ -1,8 +1,9 @@
 import { IonContent, IonHeader, IonItem, IonPage, IonSpinner, IonText, IonTitle, IonToolbar, IonGrid, IonRow, IonCol, IonAlert } from '@ionic/react';
 import DashboardCard from '../components/DashboardCard';
 import SearchBar from '../components/SearchBar'
+import { setError } from '../store/weather/slice.js' 
 import useWeatherActions from '../hooks/useWeatherActions';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 
 // Styled
@@ -11,6 +12,7 @@ import Header from '../components/Header';
 
 const Dashboard: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const dispatch = useDispatch();
   const { handleGetWeather } = useWeatherActions();
   const loading = useSelector( state => state.weather.loading);
   const temperature = useSelector( state => state.weather.temperature);
@@ -78,7 +80,10 @@ const Dashboard: React.FC = () => {
                         text: 'Ok!',
                       }
                     ]}
-                    onDidDismiss={() => setIsOpen(false)}
+                    onDidDismiss={() =>{
+                      setIsOpen(false)
+                      dispatch(setError(false))
+                    }}
                   ></IonAlert>
                 ) : (
                   <>

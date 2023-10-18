@@ -3,7 +3,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 const initialState = {
     temperature: null,
     loading: false,
-    error: null
+    error: false
 }
 
 export const weatherSlice = createSlice({
@@ -12,6 +12,9 @@ export const weatherSlice = createSlice({
     reducers: {
         resetInfo: (state, action) => {
             state.temperature = action.payload;
+        },
+        setError: (state, action) => {
+            state.error = action.payload;
         }
     },
     extraReducers: builder => {
@@ -24,6 +27,7 @@ export const weatherSlice = createSlice({
         })
         .addCase(fetchWeatherInfo.rejected, (state, action) => {
             state.loading = false;
+            state.error = true;
         })
     }
 })
@@ -45,4 +49,4 @@ export const fetchWeatherInfo = createAsyncThunk(
 
 export default weatherSlice.reducer;
 
-export const { resetInfo } = weatherSlice.actions;
+export const { resetInfo, setError } = weatherSlice.actions;
