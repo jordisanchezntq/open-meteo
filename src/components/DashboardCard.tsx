@@ -4,7 +4,12 @@ import { close } from 'ionicons/icons';
 import { useState } from "react";
 import { addUserTrace } from "../store/traces/slice";
 
-const DashboardCard = ({temp, index}) => {
+interface DashboardCardProps {
+  temp: number; 
+  index: number; 
+}
+
+const DashboardCard: React.FC<DashboardCardProps> = ({temp , index}) => {
   const dispatch = useDispatch();
   const [ isCardClosed, setIsCardClosed ] = useState(false);
 

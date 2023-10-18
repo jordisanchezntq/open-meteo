@@ -6,7 +6,7 @@ import { fetchProducts } from '../store/products/slice'
 import Element from '../styled/Element';
 
 
-const Weather = () => {
+const Weather: React.FC = () => {
   const [ temp, setTemp ] = useState([]);
   const [ refreshTrigger, setRefreshTrigger ] = useState(false);
   const dispatch = useDispatch();

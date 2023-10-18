@@ -40,7 +40,7 @@ import './theme/variables.css';
 
 setupIonicReact();
 
-const App = () => (
+const App: React.FC = () => (
   <IonApp>
     <Provider store={store}>
       <IonReactRouter>

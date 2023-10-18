@@ -9,12 +9,11 @@ import { useEffect, useState } from 'react';
 import Button from '../styled/Button'
 import Header from '../components/Header';
 
-const Dashboard = () => {
+const Dashboard: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { handleGetWeather } = useWeatherActions();
   const loading = useSelector( state => state.weather.loading);
   const temperature = useSelector( state => state.weather.temperature);
-  const location = useSelector( state => state.location.city);
   const error = useSelector(state => state.weather.error);
 
   useEffect(() => {
@@ -88,7 +87,7 @@ const Dashboard = () => {
                       ? (
                         temperature.hourly.temperature_2m
                         .slice(0, 10)
-                        .map((temp, index) => (
+                        .map((temp: any, index: any) => (
                           <DashboardCard key={index} temp={temp} index={index} />
                         ))
                         )

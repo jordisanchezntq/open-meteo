@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux';
 import { resetInfo } from '../store/weather/slice';
 import { addUserTrace } from '../store/traces/slice';
 
-function Example() {
+const SearchBar:React.FC = () => {
   const [searchLocation, setSearchLocation] = useState('');
   const dispatch = useDispatch();
 
@@ -34,4 +34,4 @@ function Example() {
     </IonItem>
   );
 }
-export default Example;
+export default SearchBar;

@@ -15,7 +15,7 @@ import {
 } from '@ionic/react';
 import Header from '../components/Header';
 
-const Profile = () => {
+const Profile: React.FC = () => {
   return (
     <IonPage>
       <Header />
