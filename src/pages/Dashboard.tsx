@@ -58,6 +58,7 @@ const Dashboard = () => {
                       >
                         {loading ? <IonSpinner /> : 'Consultar tiempo'}
                       </Button>
+                      
                     </IonCol>
                   </IonRow>
                 </IonGrid>

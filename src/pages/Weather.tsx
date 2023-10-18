@@ -25,9 +25,7 @@ const Weather = () => {
       setRefreshTrigger(true)
     }, 1500)
   }
-
-  console.log(products.products);
-
+  
   return (
     <IonPage>
       <Header />
