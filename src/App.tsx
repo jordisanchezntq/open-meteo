@@ -12,7 +12,7 @@ import {
 import { IonReactRouter } from '@ionic/react-router';
 import { appsOutline, personCircleOutline, homeOutline } from 'ionicons/icons';
 import Dashboard from './pages/Dashboard';
-import Weather from './pages/Weather';
+import Products from './pages/Products';
 import Contact from './pages/Profile';
 
 // Redux
@@ -49,8 +49,8 @@ const App: React.FC = () => (
             <Route exact path="/dashboard">
               <Dashboard />
             </Route>
-            <Route exact path="/weather">
-              <Weather />
+            <Route exact path="/products">
+              <Products />
             </Route>
             <Route path="/profile">
               <Contact />
@@ -63,7 +63,7 @@ const App: React.FC = () => (
             <IonTabButton tab="dashboard" href="/dashboard">
               <IonIcon aria-hidden="true" icon={homeOutline} size='large' />
             </IonTabButton>
-            <IonTabButton tab="weather" href="/weather">
+            <IonTabButton tab="weather" href="/products">
               <IonIcon aria-hidden="true" icon={appsOutline} size='large' />
             </IonTabButton>
             <IonTabButton tab="profile" href="/profile">

@@ -5,8 +5,7 @@ import Header from '../components/Header';
 import { fetchProducts } from '../store/products/slice'
 import Element from '../styled/Element';
 
-
-const Weather: React.FC = () => {
+const Products: React.FC = () => {
   const [ temp, setTemp ] = useState([]);
   const [ refreshTrigger, setRefreshTrigger ] = useState(false);
   const dispatch = useDispatch();
@@ -19,7 +18,7 @@ const Weather: React.FC = () => {
     dispatch(fetchProducts())
   }, [])
 
-  const handleRefresh = (e) => {
+  const handleRefresh = (e: any) => {
     setTimeout(()=> {
       e.detail.complete();
       setRefreshTrigger(true)
@@ -29,24 +28,30 @@ const Weather: React.FC = () => {
   return (
     <IonPage>
       <Header />
-      <IonContent fullscreen={true}>
         <IonHeader collapse="condense">
-          <IonToolbar>
+          <IonToolbar color='light'>
             <IonTitle>Weather</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
-        <IonItem>
-          <IonText style={{ padding: '10px 0px'}}>
-              En segunda tab, se muestra en formato galeria diferentes datos. Aqui no se trabaja el post, sino al GET y como mostrar y ordenar diferentes elementos.
-          </IonText>
-        </IonItem>
+      <IonContent color='light'>
         <IonGrid>
-        {products.products.length > 0 ? (
           <IonRow>
-            {products.products.map((product, index) => (
+            <IonCol size='12'>
+              <IonItem color='light'>
+                <IonText style={{ padding: '10px 0px'}}>
+                  <p>
+                    En segunda tab, se muestra en formato galeria diferentes datos. Aqui no se trabaja el post, sino al GET y como mostrar y ordenar diferentes elementos.
+                  </p>
+                </IonText>
+              </IonItem>
+            </IonCol>
+          </IonRow>
+        {products.products.length > 0 ? (
+          <IonRow className='ion-padding'>
+            {products.products.map((product, index: number) => (
               <IonCol size="6" key={product.id}>
                 <Element>
                   <h4 style={{ flex: 1}}>{product.title}</h4>
@@ -63,4 +68,4 @@ const Weather: React.FC = () => {
   );
 };
 
-export default Weather;
+export default Products;

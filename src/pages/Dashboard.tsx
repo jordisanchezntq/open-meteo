@@ -28,7 +28,7 @@ const Dashboard: React.FC = () => {
     <IonPage>
       <Header />
         <IonHeader collapse="condense">
-          <IonToolbar>
+          <IonToolbar color='light'>
             <IonTitle>Dashboard</IonTitle>
           </IonToolbar>
         </IonHeader>
@@ -38,7 +38,9 @@ const Dashboard: React.FC = () => {
             <IonCol size='12'>
               <IonItem color='light'>
                 <IonText>
+                  <p>
                     Esta es la versión prueba de una App para consultar datos de https://open-meteo.com/. En este caso, dividimos la app en 3 tabs. El primer tab, muestra una <strong>Card</strong> con la consulta a la Api que se realiza haciendo click en el siguiente botón:
+                  </p>
                 </IonText>
               </IonItem>
             </IonCol>
@@ -72,6 +74,7 @@ const Dashboard: React.FC = () => {
               {
                 error ? (
                   <IonAlert
+                    color='light'
                     isOpen={isOpen}
                     header="Ops!"
                     message="Debes introducir una ciudad"
