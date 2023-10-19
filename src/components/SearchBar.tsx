@@ -4,6 +4,7 @@ import { fetchLocation } from '../store/location/slice';
 import { useDispatch } from 'react-redux';
 import { resetInfo } from '../store/weather/slice';
 import { addUserTrace } from '../store/traces/slice';
+import { Input } from '../styled/Input';
 
 const SearchBar:React.FC = () => {
   const [searchLocation, setSearchLocation] = useState('');
@@ -21,8 +22,7 @@ const SearchBar:React.FC = () => {
   }
 
   return (
-    <IonItem color='light' style={{ display: 'flex', flexDirection: 'column'}}>
-      <IonSearchbar
+      <Input
       value={searchLocation || ''}
       onIonInput={e => setSearchLocation(e.target.value)}
       placeholder="Buscar ciudad"
@@ -30,8 +30,7 @@ const SearchBar:React.FC = () => {
       showCancelButton="always"
       onIonCancel={()=> handleClosingCard()}
       >
-      </IonSearchbar>
-    </IonItem>
+      </Input>
   );
 }
 export default SearchBar;
