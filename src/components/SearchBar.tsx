@@ -3,7 +3,6 @@ import { IonSearchbar, IonButton, IonItem } from '@ionic/react';
 import { fetchLocation } from '../store/location/slice';
 import { useDispatch } from 'react-redux';
 import { resetInfo } from '../store/weather/slice';
-import { addUserTrace } from '../store/traces/slice';
 import { Input } from '../styled/Input';
 
 const SearchBar:React.FC = () => {

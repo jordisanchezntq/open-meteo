@@ -28,15 +28,15 @@ const Dashboard: React.FC = () => {
     <IonPage>
       <Header />
         <IonHeader collapse="condense">
-          <IonToolbar color='light'>
+          <IonToolbar>
             <IonTitle>Dashboard</IonTitle>
           </IonToolbar>
         </IonHeader>
-      <IonContent color='light'>
+      <IonContent>
         <IonGrid>
-          <IonRow color='light'>
+          <IonRow>
             <IonCol size='12'>
-              <IonItem color='light'>
+              <IonItem>
                 <IonText>
                   <p>
                     Esta es la versión prueba de una App para consultar datos de https://open-meteo.com/. En este caso, dividimos la app en 3 tabs. El primer tab, muestra una <strong>Card</strong> con la consulta a la Api que se realiza haciendo click en el siguiente botón:
@@ -45,9 +45,10 @@ const Dashboard: React.FC = () => {
               </IonItem>
             </IonCol>
           </IonRow>
+          
           <IonRow>
             <IonCol size='12'>
-              <IonItem color='light'>
+              <IonItem>
                 <IonGrid>
                   <IonRow>
                     <IonCol>
@@ -74,7 +75,7 @@ const Dashboard: React.FC = () => {
               {
                 error ? (
                   <IonAlert
-                    color='light'
+                  
                     isOpen={isOpen}
                     header="Ops!"
                     message="Debes introducir una ciudad"
@@ -100,11 +101,13 @@ const Dashboard: React.FC = () => {
                         ))
                         )
                         : (
-                          <IonItem color='light'>
-                            <IonText className='ion-padding' style={{ fontSize: '16px'}}>
-                              Introduce una ciudad y dale click! 🙂 
+                          <IonCol>
+                            <IonText style={{ fontSize: '16px'}}>
+                              <div className='ion-text-center'>
+                                Introduce una ciudad y dale click! 🙂 
+                              </div>
                             </IonText>
-                          </IonItem>
+                          </IonCol>
                       )
                     }
                   </>

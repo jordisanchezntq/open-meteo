@@ -1,7 +1,6 @@
 import {
   IonContent,
   IonHeader,
-  IonInput,
   IonItem,
   IonLabel,
   IonList,
@@ -11,32 +10,33 @@ import {
   IonToolbar,
   IonTitle,
   IonPage,
-  IonText
+  IonText,
+  IonNavLink
 } from '@ionic/react';
 import Header from '../components/Header';
+import { Input } from '../styled/Input';
 
 const Profile: React.FC = () => {
   return (
     <IonPage>
       <Header />
         <IonHeader collapse="condense">
-          <IonToolbar color='light'>
+          <IonToolbar>
             <IonTitle>Profile</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonContent color='light' fullscreen={true}>
+        <IonContent fullscreen={true}>
           <IonItem>
             <IonText style={{ padding: '10px 0px'}}>
               En esta tab se simula el dashboard de info personal, y acciones de cambiar email y la password.
             </IonText>
           </IonItem>
-          <IonContent>
           <IonList inset={true}>
             <IonItem>
-              <IonInput label="Nombre"></IonInput>
+              <Input label="Email"></Input>
             </IonItem>
             <IonItem>
-              <IonInput label="Email"></IonInput>
+              <Input label="Password"></Input>
             </IonItem>
             <IonItem>
               <IonToggle>
@@ -46,12 +46,13 @@ const Profile: React.FC = () => {
             </IonItem>
           </IonList>
 
-          <IonList inset={true}>
-            <IonItem>
-              <IonTextarea label="Mensaje" label-placement="floating" rows={5}></IonTextarea>
-            </IonItem>
+          <IonList inset={true} className='ion-padding ion-text-center'>
+            <IonNavLink routerDirection='forward' component={''}>
+              <IonLabel color='primary'>
+                Olvidaste tu contraseña
+              </IonLabel>
+            </IonNavLink>
           </IonList>
-        </IonContent>
 
         </IonContent>
     </IonPage>

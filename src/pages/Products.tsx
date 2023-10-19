@@ -29,18 +29,18 @@ const Products: React.FC = () => {
     <IonPage>
       <Header />
         <IonHeader collapse="condense">
-          <IonToolbar color='light'>
+          <IonToolbar>
             <IonTitle>Weather</IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
-      <IonContent color='light'>
+      <IonContent>
         <IonGrid>
           <IonRow>
             <IonCol size='12'>
-              <IonItem color='light'>
+              <IonItem>
                 <IonText style={{ padding: '10px 0px'}}>
                   <p>
                     En segunda tab, se muestra en formato galeria diferentes datos. Aqui no se trabaja el post, sino al GET y como mostrar y ordenar diferentes elementos.
