@@ -52,7 +52,7 @@ const Dashboard: React.FC = () => {
                 <IonGrid>
                   <IonRow>
                     <IonCol>
-                      <SearchBar/>
+                      <SearchBar handeler={handleGetWeather}/>
                       <Button
                         className={`${loading ? 'ion-opacity': ''} ion-margin-top`}
                         style={loading ? {backgroundColor: 'var(--ion-color-danger)'} : {}}

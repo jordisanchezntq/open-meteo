@@ -3,14 +3,17 @@ import { ellipsisHorizontalOutline } from 'ionicons/icons';
 import { Link } from 'react-router-dom';
 
  const Header: React.FC = () => {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const logoSrc = !isDarkMode ? '/logo_dark.png' : '/logo_light.svg'
+
     return (
         <IonHeader>
-            <IonToolbar color={'primary'} style={{ padding: '10px 15px'}}>
+            <IonToolbar style={{ padding: '10px 15px'}}>
                 <IonButtons>
                     <Link to='/'>
                         <IonImg
                         slot='start'
-                        src='/logo_nicequest_color_white_by_gfk.svg'
+                        src={logoSrc}
                         alt='logo nicequest'
                         style={{ width: '160px'}}
                         ></IonImg>

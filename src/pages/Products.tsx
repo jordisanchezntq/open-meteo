@@ -9,10 +9,10 @@ const Products: React.FC = () => {
   const [ temp, setTemp ] = useState([]);
   const [ refreshTrigger, setRefreshTrigger ] = useState(false);
   const dispatch = useDispatch();
-  const loading = useSelector( state => state.products.loading);
-  const temperature = useSelector( state => state.weather.temperature);
-  const location = useSelector( state => state.location.city);
-  const products = useSelector( state => state.products)
+  const loading = useSelector( (state: any) => state.products.loading);
+  const temperature = useSelector( (state: any) => state.weather.temperature);
+  const location = useSelector( (state: any) => state.location.city);
+  const products = useSelector( (state: any) => state.products)
 
   useEffect(() => {
     dispatch(fetchProducts())

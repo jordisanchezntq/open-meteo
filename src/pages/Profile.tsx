@@ -39,9 +39,8 @@ const Profile: React.FC = () => {
               <Input label="Password"></Input>
             </IonItem>
             <IonItem>
-              <IonToggle>
-                <IonLabel>Suscribirse</IonLabel>
-                <IonNote color="medium">Podrás cancelar suscripción en cualquier momento</IonNote>
+              <IonToggle labelPlacement="end">
+                <IonLabel>I read all the conditions</IonLabel>
               </IonToggle>
             </IonItem>
           </IonList>

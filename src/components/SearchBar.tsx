@@ -5,9 +5,10 @@ import { useDispatch } from 'react-redux';
 import { resetInfo } from '../store/weather/slice';
 import { Input } from '../styled/Input';
 
-const SearchBar:React.FC = () => {
+const SearchBar:React.FC = (props) => {
   const [searchLocation, setSearchLocation] = useState('');
   const dispatch = useDispatch();
+  const { handeler } = props;
 
   useEffect(() => {
     dispatch(fetchLocation(searchLocation));
@@ -28,6 +29,11 @@ const SearchBar:React.FC = () => {
       color={'dark'}
       showCancelButton="always"
       onIonCancel={()=> handleClosingCard()}
+      onKeyUp={e => {
+        if (e.key === 'Enter') {
+          handeler()
+        }
+      }}
       >
       </Input>
   );
