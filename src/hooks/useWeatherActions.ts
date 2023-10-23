@@ -5,9 +5,9 @@ import { fetchLocation } from '../store/location/slice'
 
 export const useWeatherActions = () => {
     const dispatch = useDispatch();
-    const location = useSelector( state => state.location.city)
+    const location = useSelector( (state: any) => state.location.city)
 
-    const handleGetWeather = () => {
+    const handleGetWeather = (): any => {
         if(location.results) {
           const locaInput = location.results[0];
           const infoFetch = () => dispatch( fetchWeatherInfo(locaInput));

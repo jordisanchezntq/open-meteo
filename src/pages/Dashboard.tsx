@@ -14,9 +14,9 @@ const Dashboard: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dispatch = useDispatch();
   const { handleGetWeather } = useWeatherActions();
-  const loading = useSelector( state => state.weather.loading);
-  const temperature = useSelector( state => state.weather.temperature);
-  const error = useSelector(state => state.weather.error);
+  const loading = useSelector( (state: any) => state.weather.loading);
+  const temperature = useSelector( (state: any) => state.weather.temperature);
+  const error = useSelector((state: any) => state.weather.error);
 
   useEffect(() => {
     if (error) {
@@ -52,13 +52,12 @@ const Dashboard: React.FC = () => {
                 <IonGrid>
                   <IonRow>
                     <IonCol>
-                      <SearchBar handeler={handleGetWeather}/>
+                      <SearchBar handleGetWeather={handleGetWeather}/>
                       <Button
                         className={`${loading ? 'ion-opacity': ''} ion-margin-top`}
                         style={loading ? {backgroundColor: 'var(--ion-color-danger)'} : {}}
                         onClick={handleGetWeather}
                         disabled={loading}
-                        expand='block'
                       >
                         {loading ? <IonSpinner /> : 'Consultar tiempo'}
                       </Button>

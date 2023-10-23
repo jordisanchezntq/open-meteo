@@ -4,11 +4,12 @@ import { fetchLocation } from '../store/location/slice';
 import { useDispatch } from 'react-redux';
 import { resetInfo } from '../store/weather/slice';
 import { Input } from '../styled/Input';
+import { trashBin } from 'ionicons/icons';
 
 const SearchBar:React.FC = (props) => {
-  const [searchLocation, setSearchLocation] = useState('');
+  const [searchLocation, setSearchLocation] = useState<string>('');
   const dispatch = useDispatch();
-  const { handeler } = props;
+  const { handleGetWeather } = props;
 
   useEffect(() => {
     dispatch(fetchLocation(searchLocation));
@@ -23,15 +24,16 @@ const SearchBar:React.FC = (props) => {
 
   return (
       <Input
-      value={searchLocation || ''}
-      onIonInput={e => setSearchLocation(e.target.value)}
+      value={(searchLocation || '').toUpperCase()}
+      onIonInput={e => setSearchLocation(String(e.target.value))}
       placeholder="Buscar ciudad"
       color={'dark'}
-      showCancelButton="always"
+      showClearButton="always"
+      clearIcon={trashBin}
       onIonCancel={()=> handleClosingCard()}
       onKeyUp={e => {
         if (e.key === 'Enter') {
-          handeler()
+          handleGetWeather()
         }
       }}
       >
