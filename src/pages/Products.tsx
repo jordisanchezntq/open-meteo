@@ -1,4 +1,4 @@
-import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem, IonCol, IonGrid, IonRow, IonRefresher, IonRefresherContent, IonImg } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem, IonCol, IonGrid, IonRow, IonRefresher, IonRefresherContent, IonImg, IonSpinner } from '@ionic/react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
@@ -49,9 +49,13 @@ const Products: React.FC = () => {
               </IonItem>
             </IonCol>
           </IonRow>
-        {products.products.length > 0 ? (
+        {loading 
+        ? ( <div className='ion-text-center'>
+              <IonSpinner className='ion-text-center' />
+            </div>)
+        : products.products.length > 0 ? (
           <IonRow className='ion-padding'>
-            {products.products.map((product, index: number) => (
+            {products.products.map((product: any) => (
               <IonCol size="6" key={product.id}>
                 <Element>
                   <h4 style={{ flex: 1}}>{product.title}</h4>
