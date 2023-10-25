@@ -3,6 +3,7 @@ import {
   IonApp,
   IonIcon,
   IonLabel,
+  IonNav,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
@@ -59,6 +60,7 @@ const App: React.FC = () => (
               <Redirect to="/dashboard" />
             </Route>
           </IonRouterOutlet>
+          <IonNav root={() => <Dashboard />}></IonNav>
           <IonTabBar slot="bottom">
             <IonTabButton tab="dashboard" href="/dashboard">
               <IonIcon aria-hidden="true" icon={homeOutline} size='large' />

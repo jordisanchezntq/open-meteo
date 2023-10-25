@@ -27,7 +27,6 @@ const SearchBar:React.FC = (props) => {
       value={(searchLocation || '').toUpperCase()}
       onIonInput={e => setSearchLocation(String(e.target.value))}
       placeholder="Buscar ciudad"
-      color={'dark'}
       showClearButton="always"
       clearIcon={trashBin}
       onIonCancel={()=> handleClosingCard()}
