@@ -23,9 +23,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 
 // Styled
-import Button from "../styled/Button";
 import Header from "../components/Header";
-import DashboardDevices from "./DashboardDevices";
 
 const Dashboard: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,17 +50,11 @@ const Dashboard: React.FC = () => {
       <IonContent>
         <IonGrid>
           <IonRow>
-            <IonItem>
-              <IonCol size="12">
-                <IonNavLink
-                  className="ion-margin-bottom"
-                  routerDirection="forward"
-                  component={() => <DashboardDevices />}
-                >
-                  <Button>Devices</Button>
-                </IonNavLink>
-              </IonCol>
-            </IonItem>
+            <IonCol size="12">
+              <IonTitle>
+                Consulta las últimas temperaturas
+              </IonTitle>
+            </IonCol>
           </IonRow>
           <IonRow>
             <IonCol size="12">
@@ -75,20 +67,16 @@ const Dashboard: React.FC = () => {
                         className="ion-margin-bottom"
                       />
 
-                      <Button
+                      <IonButton
                         className={`${
                           loading ? "ion-opacity" : ""
                         } ion-margin-bottom`}
-                        style={
-                          loading
-                            ? { backgroundColor: "var(--ion-color-danger)" }
-                            : {}
-                        }
                         onClick={handleGetWeather}
                         disabled={loading}
+                        expand="block"
                       >
                         {loading ? <IonSpinner /> : "Consultar tiempo"}
-                      </Button>
+                      </IonButton>
                     </IonCol>
                   </IonRow>
                 </IonGrid>

@@ -1,18 +1,15 @@
 import styled from 'styled-components'
+import { IonButton } from '@ionic/react';
 
-interface ButtonProps {
-    $bgColor?: string;
-}
   
-  const Button = styled.button<ButtonProps>`
-    width: 100%;
-    height: 48px;
-    display: block;
-    background-color: ${(props) => props.$bgColor || '#105ae1'};
-    font-size: 18px;
-    color: var(--ion-color-primary-contrast);
-    cursor: pointer;
-    border-radius: 50px;
+  const Button = styled(IonButton)`
+    &&&&&&&&& {
+      height: 48px;
+      padding: 0px 15px;
+      font-size: 18px;
+      cursor: pointer;
+      border-radius: 50px !important;
+    }
   `;
   
   export default Button;

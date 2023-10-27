@@ -1,8 +1,9 @@
-import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonCardSubtitle, IonItemDivider, IonIcon } from "@ionic/react";
+import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonText, IonItem, IonIcon, IonThumbnail, IonLabel } from "@ionic/react";
 import { useDispatch } from "react-redux";
 import { close } from 'ionicons/icons';
 import { useState } from "react";
 import { addUserTrace } from "../store/traces/slice";
+import KorusIcon from '../svg/KorusIcon.jsx'
 
 interface DashboardCardProps {
   temp: number; 
@@ -22,23 +23,27 @@ const DashboardCard: React.FC<DashboardCardProps> = ({temp , index}) => {
     }))
   }
 
-  // const maxTemp = Math.max(...infoTemp);
-  // const minTemp = Math.min(...infoTemp);
-
     return (
       <IonCard className={ isCardClosed ? 'ion-hide' : '' }>
         <IonCardHeader color={'primary'}>
           <IonCardTitle>Temperatura {index + 1}</IonCardTitle>
-          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <div></div> {/* Esto crea un espacio en blanco */}
-            <IonIcon 
+          <IonIcon 
             size={'large'} 
             icon={close}
             onClick={() => handleCloseCard(index)}
-            ></IonIcon>
-          </div>
+          ></IonIcon>
         </IonCardHeader>
-        <IonCardContent className="ion-margin-top ion-text-center" style={{ fontSize: '22px', color: 'var(--ion-color-dark'}}> {temp} &deg;C</IonCardContent>
+
+        <IonCardContent className="ion-margin-top ion-text-center" style={{ fontSize: '22px', color: 'var(--ion-color-dark'}}>
+          
+        <IonItem>
+          <KorusIcon />
+          <IonText>
+            {temp} &deg;C
+          </IonText>
+        </IonItem>
+          
+        </IonCardContent>
       </IonCard>
     )
 

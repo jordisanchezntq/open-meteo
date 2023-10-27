@@ -1,0 +1,17 @@
+/* CUSTOM STYLES */
+
+/* CUSTOM BUTTONS */
+
+ion-button, .btn {
+    height: 48px;
+    --padding: 0px 15px;
+    font-size: 18px;
+    cursor: pointer;
+    --border-radius: 25px;
+}
+
+ion-searchbar {
+    height: 48px;
+    --border-radius: 25px;
+    --background: transparent;
+}

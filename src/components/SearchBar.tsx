@@ -16,14 +16,14 @@ const SearchBar:React.FC = (props) => {
   }, [searchLocation])
 
   const handleClosingCard = () => {
-    console.log('click')
     setSearchLocation(''); 
     const reset = () => dispatch(resetInfo())
     reset();
   }
 
   return (
-      <Input
+      <IonSearchbar
+      class='custom'
       value={(searchLocation || '').toUpperCase()}
       onIonInput={e => setSearchLocation(String(e.target.value))}
       placeholder="Buscar ciudad"
@@ -36,7 +36,7 @@ const SearchBar:React.FC = (props) => {
         }
       }}
       >
-      </Input>
+      </IonSearchbar>
   );
 }
 export default SearchBar;

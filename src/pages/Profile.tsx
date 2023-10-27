@@ -4,19 +4,56 @@ import {
   IonItem,
   IonLabel,
   IonList,
-  IonNote,
+  IonInput,
   IonTextarea,
   IonToggle,
   IonToolbar,
   IonTitle,
   IonPage,
   IonText,
-  IonNavLink
+  IonNavLink,
+  IonCard,
+  IonCardHeader,
+  IonCardTitle,
+  IonCardContent
 } from '@ionic/react';
 import Header from '../components/Header';
-import { Input } from '../styled/Input';
+
+// Capacitor
+import { Device } from '@capacitor/device';
+import { Geolocation } from '@capacitor/geolocation';
+import { useEffect, useState } from 'react';
+
 
 const Profile: React.FC = () => {
+  const [ deviceInfo, setDeviceInfo ] = useState(null);
+  const [ coordinates, setCoordinates ] = useState(null);
+  
+  useEffect(() => {
+    // Capacitar get Devide info
+    const getDevideInfo = async () => {
+      try {
+        const info = await Device.getInfo();
+        setDeviceInfo(info)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    getDevideInfo();
+
+    // Capacitor get Geolocation
+    const printCurrentPosition = async () => {
+      try {
+        const coordinates = await Geolocation.getCurrentPosition();
+        setCoordinates(coordinates)
+        console.log(coordinates)
+      } catch (error) {
+        console.log(error)
+      }    
+    };
+    printCurrentPosition();
+  }, [])
+
   return (
     <IonPage>
       <Header />
@@ -33,10 +70,10 @@ const Profile: React.FC = () => {
           </IonItem>
           <IonList inset={true}>
             <IonItem>
-              <Input label="Email"></Input>
+              <IonInput label="Email"></IonInput>
             </IonItem>
             <IonItem>
-              <Input label="Password"></Input>
+              <IonInput label="Password"></IonInput>
             </IonItem>
             <IonItem>
               <IonToggle labelPlacement="end">
@@ -52,6 +89,40 @@ const Profile: React.FC = () => {
               </IonLabel>
             </IonNavLink>
           </IonList>
+
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle>Device Info</IonCardTitle>
+            </IonCardHeader>
+
+            <IonCardContent>
+             { deviceInfo &&
+              Object.entries(deviceInfo).map(([key, value], i) => (
+                <>
+                  <IonText key={i}>
+                    {key}: {value}
+                  </IonText>
+                  <br />
+                </>
+              ))
+             }
+            </IonCardContent>
+          </IonCard>
+
+          <IonCard>
+            <IonCardHeader>
+              <IonCardTitle>Geolocalización</IonCardTitle>
+            </IonCardHeader>
+
+            <IonCardContent>
+             <IonText className='ion-padding-end'>
+              {coordinates.coords.latitude}
+             </IonText>
+             <IonText>
+              {coordinates.coords.longitude}
+             </IonText>
+            </IonCardContent>
+          </IonCard>
 
         </IonContent>
     </IonPage>
