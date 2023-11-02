@@ -2,8 +2,8 @@ import { IonContent, IonHeader, IonPage, IonText, IonTitle, IonToolbar, IonItem,
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import Header from '../components/Header';
-import { fetchProducts } from '../store/products/slice'
 import Element from '../styled/Element';
+import { useGetProductsQuery } from '../store/apis/productApi'
 
 const Products: React.FC = () => {
   const [ temp, setTemp ] = useState([]);
@@ -12,11 +12,12 @@ const Products: React.FC = () => {
   const loading = useSelector( (state: any) => state.products.loading);
   const temperature = useSelector( (state: any) => state.weather.temperature);
   const location = useSelector( (state: any) => state.location.city);
-  const products = useSelector( (state: any) => state.products)
 
-  useEffect(() => {
-    dispatch(fetchProducts())
-  }, [])
+  const {
+    data: products = [],
+    isLoading,
+
+  } = useGetProductsQuery();
 
   const handleRefresh = (e: any) => {
     setTimeout(()=> {
@@ -49,13 +50,13 @@ const Products: React.FC = () => {
               </IonItem>
             </IonCol>
           </IonRow>
-        {loading 
+        {isLoading 
         ? ( <div className='ion-text-center'>
               <IonSpinner className='ion-text-center' />
             </div>)
-        : products.products.length > 0 ? (
+        : products.length > 0 ? (
           <IonRow className='ion-padding'>
-            {products.products.map((product: any) => (
+            {products.map((product: any) => (
               <IonCol size="6" key={product.id}>
                 <Element>
                   <h4 style={{ flex: 1}}>{product.title}</h4>
@@ -73,3 +74,4 @@ const Products: React.FC = () => {
 };
 
 export default Products;
+
