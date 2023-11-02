@@ -34,10 +34,10 @@ const Products: React.FC = () => {
             <IonTitle>Weather</IonTitle>
           </IonToolbar>
         </IonHeader>
+      <IonContent>
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
-      <IonContent>
         <IonGrid>
           <IonRow>
             <IonCol size='12'>
