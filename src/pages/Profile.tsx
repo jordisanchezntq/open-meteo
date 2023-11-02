@@ -30,7 +30,7 @@ const Profile: React.FC = () => {
   const [ coordinates, setCoordinates ] = useState(null);
   
   useEffect(() => {
-    // Capacitar get Devide info
+    // CapacitOr get Devide info
     const getDevideInfo = async () => {
       try {
         const info = await Device.getInfo();
@@ -116,10 +116,10 @@ const Profile: React.FC = () => {
 
             <IonCardContent>
              <IonText className='ion-padding-end'>
-              {coordinates.coords.latitude}
+              {coordinates && coordinates.coords.latitude}
              </IonText>
              <IonText>
-              {coordinates.coords.longitude}
+              {coordinates && coordinates.coords.longitude}
              </IonText>
             </IonCardContent>
           </IonCard>
