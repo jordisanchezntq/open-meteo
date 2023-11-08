@@ -25,10 +25,10 @@ import Button from '../styled/Button';
                             <IonButton
                             className='btn ion-flex-end'
                                 >
-                                    <IonLabel className='ion-padding'>
+                                    <IonLabel>
                                         40
                                     </IonLabel>
-                                    <IonLabel className='ion-padding'>
+                                    <IonLabel className='ion-padding-start'>
                                         Korus
                                     </IonLabel>
                             </IonButton>

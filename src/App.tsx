@@ -40,13 +40,14 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 import './theme/custom.css'
+import ErrorPage from './pages/ErrorPage';
 
 setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
     <ErrorBoundary
-    fallback={<></>}
+    fallback={<ErrorPage />}
     >
       <Provider store={store}>
         <IonReactRouter>
@@ -69,12 +70,15 @@ const App: React.FC = () => (
             <IonTabBar slot="bottom">
               <IonTabButton tab="dashboard" href="/dashboard">
                 <IonIcon aria-hidden="true" icon={homeOutline} size='large' />
+                <IonLabel>Dashboard</IonLabel>
               </IonTabButton>
               <IonTabButton tab="weather" href="/products">
                 <IonIcon aria-hidden="true" icon={appsOutline} size='large' />
+                <IonLabel>Shop</IonLabel>
               </IonTabButton>
               <IonTabButton tab="profile" href="/profile">
                 <IonIcon aria-hidden="true" icon={personCircleOutline} size='large' />
+                <IonLabel>Profile</IonLabel>
               </IonTabButton>
             </IonTabBar>
           </IonTabs>

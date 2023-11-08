@@ -1,4 +1,4 @@
-import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonText, IonItem, IonIcon, IonThumbnail, IonLabel } from "@ionic/react";
+import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonText, IonItem, IonIcon, IonThumbnail, IonLabel, IonRow } from "@ionic/react";
 import { useDispatch } from "react-redux";
 import { close } from 'ionicons/icons';
 import { useState } from "react";
@@ -26,13 +26,14 @@ const DashboardCard: React.FC<DashboardCardProps> = ({temp , index}) => {
     return (
       <IonCard className={ isCardClosed ? 'ion-hide' : '' } color={'primary'}>
         <IonCardHeader>
-          <IonCardTitle>Temperatura {index + 1}</IonCardTitle>
-          <IonIcon 
-            size={'large'} 
-            icon={close}
-            onClick={() => handleCloseCard(index)}
-            slot="end"
-          ></IonIcon>
+          <IonRow className="ion-justify-content-between">
+            <IonCardTitle>Temperatura {index + 1}</IonCardTitle>
+            <IonIcon 
+              size={'large'} 
+              icon={close}
+              onClick={() => handleCloseCard(index)}
+            ></IonIcon>
+          </IonRow>
         </IonCardHeader>
 
         <IonCardContent className="ion-margin-top ion-text-center" style={{ fontSize: '22px', color: 'var(--ion-color-dark'}}>
@@ -40,7 +41,7 @@ const DashboardCard: React.FC<DashboardCardProps> = ({temp , index}) => {
           <IonThumbnail slot="end">
               <img alt="Silhouette of mountains" src="/Korus.png" />
             </IonThumbnail>
-            <IonLabel>
+            <IonLabel style={{fontSize: '22px'}}>
             {temp} &deg;C
             </IonLabel>
         </IonItem>

@@ -40,28 +40,21 @@ const Profile: React.FC = () => {
       }
     }
     getDevideInfo();
+  },[])
 
-    // Capacitor get Geolocation
-    const printCurrentPosition = async () => {
+    useEffect(() => {
       try {
-        const coordinates = await Geolocation.getCurrentPosition();
-        setCoordinates(coordinates)
-        console.log(coordinates)
+        fetch('https://jsonplaceholder.typicode.com/todos/1')
+          .then(response => response.json())
+          .then(json => console.log(json))
       } catch (error) {
         console.log(error)
-      }    
-    };
-    printCurrentPosition();
-  }, [])
+      }
+    }, [])
 
   return (
     <IonPage>
       <Header />
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle>Profile</IonTitle>
-          </IonToolbar>
-        </IonHeader>
         <IonContent fullscreen={true}>
           <IonItem>
             <IonText style={{ padding: '10px 0px'}}>
@@ -118,9 +111,7 @@ const Profile: React.FC = () => {
              <IonText className='ion-padding-end'>
               {coordinates && coordinates.coords.latitude}
              </IonText>
-             <IonText>
-              {coordinates && coordinates.coords.longitude}
-             </IonText>
+
             </IonCardContent>
           </IonCard>
 

@@ -29,12 +29,7 @@ const Products: React.FC = () => {
   return (
     <IonPage>
       <Header />
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle>Weather</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-      <IonContent>
+      <IonContent fullscreen={true}>
         <IonRefresher slot="fixed" onIonRefresh={handleRefresh}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
