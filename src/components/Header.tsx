@@ -1,4 +1,4 @@
-import { IonImg, IonHeader, IonRow, IonText, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon} from '@ionic/react';
+import { IonImg, IonHeader, IonRow, IonText, IonTitle, IonToolbar, IonButtons, IonButton, IonIcon, IonGrid, IonCol, IonLabel} from '@ionic/react';
 import { Link } from 'react-router-dom';
 import KorusIcon from '../svg/KorusIcon.jsx'
 import Button from '../styled/Button';
@@ -9,24 +9,32 @@ import Button from '../styled/Button';
 
     return (
         <IonHeader>
-            <IonToolbar style={{ padding: '10px 15px'}}>
-                <IonButtons className='ion-justify-content-between'>
-                        <Link to='/'>
-                            <IonImg
-                            slot='start'
-                            src={logoSrc}
-                            alt='logo nicequest'
-                            style={{ width: '160px'}}
-                            ></IonImg>
-                        </Link>
-                        <IonButton
-                        className='btn'
-                            >
-                                <KorusIcon />
-                                40
-                        </IonButton>
-                </IonButtons>
-            </IonToolbar>
+                <IonGrid>
+                    <IonRow className='ion-justify-content-between ion-align-items-center'>
+                        <IonCol size='6'>
+                            <Link to='/'>
+                                <IonImg
+                                slot='start'
+                                src={logoSrc}
+                                alt='logo nicequest'
+                                style={{ width: '100px'}}
+                                ></IonImg>
+                            </Link>
+                        </IonCol>
+                        <IonCol size='6'>
+                            <IonButton
+                            className='btn ion-flex-end'
+                                >
+                                    <IonLabel className='ion-padding'>
+                                        40
+                                    </IonLabel>
+                                    <IonLabel className='ion-padding'>
+                                        Korus
+                                    </IonLabel>
+                            </IonButton>
+                        </IonCol>
+                    </IonRow>
+                </IonGrid>
         </IonHeader>
     )
  }

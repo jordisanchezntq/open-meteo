@@ -24,25 +24,26 @@ const DashboardCard: React.FC<DashboardCardProps> = ({temp , index}) => {
   }
 
     return (
-      <IonCard className={ isCardClosed ? 'ion-hide' : '' }>
-        <IonCardHeader color={'primary'}>
+      <IonCard className={ isCardClosed ? 'ion-hide' : '' } color={'primary'}>
+        <IonCardHeader>
           <IonCardTitle>Temperatura {index + 1}</IonCardTitle>
           <IonIcon 
             size={'large'} 
             icon={close}
             onClick={() => handleCloseCard(index)}
+            slot="end"
           ></IonIcon>
         </IonCardHeader>
 
         <IonCardContent className="ion-margin-top ion-text-center" style={{ fontSize: '22px', color: 'var(--ion-color-dark'}}>
-          
-        <IonItem>
-          <KorusIcon />
-          <IonText>
+        <IonItem color={'primary'}>
+          <IonThumbnail slot="end">
+              <img alt="Silhouette of mountains" src="/Korus.png" />
+            </IonThumbnail>
+            <IonLabel>
             {temp} &deg;C
-          </IonText>
+            </IonLabel>
         </IonItem>
-          
         </IonCardContent>
       </IonCard>
     )

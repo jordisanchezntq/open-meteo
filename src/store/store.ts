@@ -1,4 +1,4 @@
-import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import weatherReducer from "./weather/slice";
 import locationReducer from "./location/slice"
 import traceReducer from "./traces/slice"

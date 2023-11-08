@@ -1,4 +1,5 @@
 import { Redirect, Route } from 'react-router-dom';
+import { ErrorBoundary } from 'react-error-boundary';
 import {
   IonApp,
   IonIcon,
@@ -44,38 +45,42 @@ setupIonicReact();
 
 const App: React.FC = () => (
   <IonApp>
-    <Provider store={store}>
-      <IonReactRouter>
-        <IonTabs>
-          <IonRouterOutlet>
-            <Route exact path="/dashboard">
-              <Dashboard />
-            </Route>
-            <Route exact path="/products">
-              <Products />
-            </Route>
-            <Route path="/profile">
-              <Contact />
-            </Route>
-            <Route exact path="/">
-              <Redirect to="/dashboard" />
-            </Route>
-          </IonRouterOutlet>
-          <IonNav root={() => <Dashboard />}></IonNav>
-          <IonTabBar slot="bottom">
-            <IonTabButton tab="dashboard" href="/dashboard">
-              <IonIcon aria-hidden="true" icon={homeOutline} size='large' />
-            </IonTabButton>
-            <IonTabButton tab="weather" href="/products">
-              <IonIcon aria-hidden="true" icon={appsOutline} size='large' />
-            </IonTabButton>
-            <IonTabButton tab="profile" href="/profile">
-              <IonIcon aria-hidden="true" icon={personCircleOutline} size='large' />
-            </IonTabButton>
-          </IonTabBar>
-        </IonTabs>
-      </IonReactRouter>
-    </Provider>
+    <ErrorBoundary
+    fallback={<></>}
+    >
+      <Provider store={store}>
+        <IonReactRouter>
+          <IonTabs>
+            <IonRouterOutlet>
+              <Route exact path="/dashboard">
+                <Dashboard />
+              </Route>
+              <Route exact path="/products">
+                <Products />
+              </Route>
+              <Route path="/profile">
+                <Contact />
+              </Route>
+              <Route exact path="/">
+                <Redirect to="/dashboard" />
+              </Route>
+            </IonRouterOutlet>
+            <IonNav root={() => <Dashboard />}></IonNav>
+            <IonTabBar slot="bottom">
+              <IonTabButton tab="dashboard" href="/dashboard">
+                <IonIcon aria-hidden="true" icon={homeOutline} size='large' />
+              </IonTabButton>
+              <IonTabButton tab="weather" href="/products">
+                <IonIcon aria-hidden="true" icon={appsOutline} size='large' />
+              </IonTabButton>
+              <IonTabButton tab="profile" href="/profile">
+                <IonIcon aria-hidden="true" icon={personCircleOutline} size='large' />
+              </IonTabButton>
+            </IonTabBar>
+          </IonTabs>
+        </IonReactRouter>
+      </Provider>
+    </ErrorBoundary>
   </IonApp>
 );
 
